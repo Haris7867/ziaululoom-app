@@ -37,12 +37,12 @@ async function runSeed(): Promise<void> {
 
   /* ---------------- Admin users ---------------- */
   await db.insert(adminUsers).values([
-    { name: "Dr. Imran Siddiqui", email: "admin@alnoor.edu.pk", passwordHash: hashPassword("Admin@2027"), role: "super_admin" },
-    { name: "Mufti Abdul Rahman", email: "mufti@alnoor.edu.pk", passwordHash: hashPassword("Mufti@2027"), role: "mufti" },
-    { name: "Hafiz Bilal Ahmed", email: "qurbani@alnoor.edu.pk", passwordHash: hashPassword("Qurbani@2027"), role: "qurbani_incharge" },
-    { name: "Ms. Sana Fatima", email: "cashier@alnoor.edu.pk", passwordHash: hashPassword("Cashier@2027"), role: "cashier" },
-    { name: "Mr. Usman Tariq", email: "dispatch@alnoor.edu.pk", passwordHash: hashPassword("Dispatch@2027"), role: "dispatch" },
-    { name: "Board Viewer", email: "viewer@alnoor.edu.pk", passwordHash: hashPassword("Viewer@2027"), role: "viewer" },
+    { name: "Dr. Imran Siddiqui", email: "admin@alnoor.edu.pk", passwordHash: hashPassword("Shju6ROK2nYu"), role: "super_admin" },
+    { name: "Mufti Abdul Rahman", email: "mufti@alnoor.edu.pk", passwordHash: hashPassword("7MpGq4f51I0V"), role: "mufti" },
+    { name: "Hafiz Bilal Ahmed", email: "qurbani@alnoor.edu.pk", passwordHash: hashPassword("V4amFbTi0kYk"), role: "qurbani_incharge" },
+    { name: "Ms. Sana Fatima", email: "cashier@alnoor.edu.pk", passwordHash: hashPassword("UueMu9RvfNhU"), role: "cashier" },
+    { name: "Mr. Usman Tariq", email: "dispatch@alnoor.edu.pk", passwordHash: hashPassword("bsSXiSb2ofwN"), role: "dispatch" },
+    { name: "Board Viewer", email: "viewer@alnoor.edu.pk", passwordHash: hashPassword("3PbfbLcPA0g2"), role: "viewer" },
   ]);
 
   /* ---------------- Settings ---------------- */
