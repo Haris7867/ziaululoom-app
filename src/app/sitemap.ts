@@ -4,7 +4,7 @@ import { getEvents, getFatawa, getPdfResources, getProgrammes } from "@/lib/data
 export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const base = (process.env.NEXT_PUBLIC_SITE_URL || "https://alnoor.edu.pk").replace(/\/$/, "");
+  const base = (process.env.NEXT_PUBLIC_SITE_URL || "https://ziaululoom.com").replace(/\/$/, "");
   const staticPaths = [
     "", "/about", "/academics", "/admissions", "/library", "/darul-ifta", "/darul-ifta/ask",
     "/events", "/gallery", "/articles", "/qurbani", "/qurbani/book", "/qurbani/status", "/qurbani/faq",

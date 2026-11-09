@@ -104,7 +104,7 @@ export function HomeView({
       <section className="section !pt-6">
         <div className="container-x grid items-center gap-7 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="relative">
-            <img src={IMAGES.classroom} alt={pick("A class in session at Al-Noor Islamic University", "النور اسلامک یونیورسٹی میں سبق جاری")} loading="lazy" className="aspect-[4/3] w-full rounded-lg object-cover shadow-lg" />
+            <img src={IMAGES.classroom} alt={pick("A class in session at Jamia Ghousia Zia-Ul-Uloom", "جامعہ غوثیہ ضیاء العلوم میں سبق جاری")} loading="lazy" className="aspect-[4/3] w-full rounded-lg object-cover shadow-lg" />
             <div className="absolute -bottom-5 end-3 max-w-[15rem] rounded-lg border border-deep/10 border-t-4 border-t-fresh bg-white p-3 shadow-lg">
               <div className="flex items-center gap-2.5">
                 <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-deep font-display text-lg font-bold text-white">IS</span>

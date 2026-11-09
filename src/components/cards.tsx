@@ -390,7 +390,7 @@ export function ArticleCard({ slug, titleEn, titleUr, excerptEn, excerptUr, imag
 export function WhatsAppHelp({ message }: { message: string }) {
   const { t } = useI18n();
   return (
-    <a href={whatsappLink("+923001234567", message)} target="_blank" rel="noopener noreferrer" className="btn btn-outline !py-1.5 !text-xs">
+    <a href={whatsappLink("+92515509922", message)} target="_blank" rel="noopener noreferrer" className="btn btn-outline !py-1.5 !text-xs">
       <Icon name="whatsapp" size={14} /> {t("nav.whatsapp")}
     </a>
   );

@@ -11,7 +11,7 @@ export async function GET(_request: Request, context: { params: Promise<{ slug: 
 
   const bytes = await buildContentPdf({
     title: `${kind} ${safeYear}`,
-    subtitle: "Sample placeholder report — Al-Noor Islamic University",
+    subtitle: "Sample placeholder report — Jamia Ghousia Zia-Ul-Uloom",
     meta: "Prepared for the Board of Governors · Figures are illustrative placeholders",
     sections: [
       {

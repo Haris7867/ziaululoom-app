@@ -319,7 +319,7 @@ export async function createSeasonAction(formData: FormData): Promise<void> {
     sharePrice: num(formData, "sharePrice", 45000),
     cowPrice: num(formData, "cowPrice", 315000),
     cowCount: num(formData, "cowCount", 14),
-    slaughterLocation: text(formData, "slaughterLocation") || "Al-Noor University Farm, Lahore (placeholder)",
+    slaughterLocation: text(formData, "slaughterLocation") || "Jamia Ghousia University Farm, Lahore (placeholder)",
   });
   await logAudit(user.email, "season.create", "qurbani_seasons", null, text(formData, "name"), user.role);
   revalidatePath("/admin/qurbani");

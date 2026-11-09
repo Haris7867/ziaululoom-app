@@ -21,7 +21,7 @@ export default async function AcademicsPage() {
         data={{
           "@context": "https://schema.org",
           "@type": "ItemList",
-          name: "Programmes at Al-Noor Islamic University",
+          name: "Programmes at Jamia Ghousia Zia-Ul-Uloom",
           itemListElement: programmes.map((programme, index) => ({
             "@type": "ListItem",
             position: index + 1,
@@ -29,7 +29,7 @@ export default async function AcademicsPage() {
               "@type": "Course",
               name: programme.titleEn,
               description: programme.summaryEn,
-              provider: { "@type": "Organization", name: "Al-Noor Islamic University" },
+              provider: { "@type": "Organization", name: "Jamia Ghousia Zia-Ul-Uloom" },
             },
           })),
         }}

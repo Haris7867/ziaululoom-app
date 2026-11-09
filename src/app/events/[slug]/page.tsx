@@ -48,7 +48,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
           eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
           location: { "@type": "Place", name: event.venueEn, address: "Canal Road, Lahore, Pakistan" },
           image: event.coverImage,
-          organizer: { "@type": "Organization", name: "Al-Noor Islamic University", url: "/" },
+          organizer: { "@type": "Organization", name: "Jamia Ghousia Zia-Ul-Uloom", url: "/" },
         }}
       />
       <section className="relative isolate overflow-hidden bg-deep text-white">

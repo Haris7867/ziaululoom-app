@@ -23,7 +23,7 @@ export default function StatusPage() {
             <StatusLookup />
             <div className="mt-4 rounded-md bg-light p-3 text-xs text-deep">
               <p className="font-bold">Demo lookup</p>
-              <p>QRB-2027-000123 · +92 300 1234567</p>
+              <p>QRB-2027-000123 · +92 51 5509922</p>
             </div>
           </div>
           <aside className="space-y-3">

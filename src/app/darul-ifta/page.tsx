@@ -22,7 +22,7 @@ export default async function DarulIftaPage() {
         data={{
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "Darul Ifta — Al-Noor Islamic University",
+          name: "Darul Ifta — Jamia Ghousia Zia-Ul-Uloom",
           url: "/darul-ifta",
           description: "Hanafi fatawa researched and approved by qualified Muftis.",
         }}

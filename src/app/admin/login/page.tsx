@@ -8,14 +8,7 @@ import { Icon } from "@/components/Icon";
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Staff login", robots: { index: false } };
 
-const DEMO = [
-  ["admin@alnoor.edu.pk", "Admin@2027", "Super admin"],
-  ["mufti@alnoor.edu.pk", "Mufti@2027", "Mufti / Darul Ifta"],
-  ["qurbani@alnoor.edu.pk", "Qurbani@2027", "Qurbani in-charge"],
-  ["cashier@alnoor.edu.pk", "Cashier@2027", "Cashier"],
-  ["dispatch@alnoor.edu.pk", "Dispatch@2027", "Dispatch team"],
-  ["viewer@alnoor.edu.pk", "Viewer@2027", "Viewer"],
-];
+const DEMO: string[][] = [];
 
 export default async function AdminLoginPage({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
   const user = await getSessionUser();
@@ -36,7 +29,7 @@ export default async function AdminLoginPage({ searchParams }: { searchParams: P
             <form action={loginAction} className="mt-4 space-y-3">
               <label className="block">
                 <span className="label">Email</span>
-                <input name="email" type="email" required autoComplete="username" className="input" dir="ltr" defaultValue="admin@alnoor.edu.pk" />
+                <input name="email" type="email" required autoComplete="username" className="input" dir="ltr" defaultValue="" />
               </label>
               <label className="block">
                 <span className="label">Password</span>
@@ -49,7 +42,6 @@ export default async function AdminLoginPage({ searchParams }: { searchParams: P
 
           <div className="card p-6">
             <h2 className="text-lg font-bold">Demo accounts</h2>
-            <p className="text-xs text-ink/60">Passwords are placeholders for the demo. Staff roles: super admin, Qurbani in-charge, cashier, dispatch team, viewer, Mufti.</p>
             <ul className="mt-3 space-y-2 text-sm">
               {DEMO.map(([email, password, role]) => (
                 <li key={email} className="rounded-md border border-deep/10 bg-light/50 p-2.5">

@@ -40,7 +40,7 @@ export const UNIVERSITY = {
     whatsapp: "https://wa.me/92515509922",
   },
 };
- 
+
 export const BRANCHES = [
   {
     nameEn: "Jamia Ghousia Zia Ul Uloom (Main Campus)",
@@ -67,7 +67,7 @@ export const BRANCHES = [
     mapLink: "https://www.google.com/maps/search/?api=1&query=Jamia+Zia+Ul+Uloom+Atta+Ul+Habib+Lil-Banat%2C+Opposite+Al-Shifa+Eye+Hospital%2C+Rawalpindi",
   },
 ] as const;
- 
+
 export const PRAYER_TIMES = [
   { key: "fajr", time: "4:32 am" },
   { key: "zuhr", time: "12:18 pm" },
@@ -75,7 +75,7 @@ export const PRAYER_TIMES = [
   { key: "maghrib", time: "6:12 pm" },
   { key: "isha", time: "7:32 pm" },
 ] as const;
- 
+
 export const STATS = [
   { key: "home.statStudents", value: 1840, suffix: "+" },
   { key: "home.statGraduates", value: 6200, suffix: "+" },
@@ -83,7 +83,7 @@ export const STATS = [
   { key: "home.statCampuses", value: 3, suffix: "" },
   { key: "home.statScholars", value: 68, suffix: "" },
 ] as const;
- 
+
 export const HERO_SLIDES = [
   {
     image: "/images/campus-hero.jpg",
@@ -136,7 +136,7 @@ export const HERO_SLIDES = [
     verseUr: "«اور قرآن کو ٹھہر ٹھہر کر پڑھو۔» — المزمل 73:4",
   },
 ];
- 
+
 export const QUICK_TILES = [
   { href: "/admissions", icon: "cap", titleKey: "nav.admissions", textEn: "Apply for 2027", textUr: "2027 کے لیے درخواست" },
   { href: "/donate", icon: "heart", titleKey: "nav.donate", textEn: "Zakat & Sadaqah", textUr: "زکوٰۃ و صدقہ" },
@@ -147,7 +147,7 @@ export const QUICK_TILES = [
   { href: "/students#portal", icon: "lock", titleKey: "students.portal", textEn: "Secure login", textUr: "محفوظ لاگ ان" },
   { href: "/qurbani", icon: "cow", titleKey: "qurbani.title", textEn: "Book a hissa", textUr: "حصہ بک کریں" },
 ];
- 
+
 export const WHY_US = [
   {
     icon: "quran",
@@ -178,7 +178,7 @@ export const WHY_US = [
     textUr: "سمسٹر نظام، تحقیقی طریقے، عربی زبان لیبز اور اختیاری کمپیوٹر خواندگی۔",
   },
 ];
- 
+
 export const PROGRAMME_ICONS: Record<string, string> = {
   "bs-islamic-studies": "book",
   "bs-quran-tafseer": "quran",
@@ -189,14 +189,14 @@ export const PROGRAMME_ICONS: Record<string, string> = {
   "bs-arabic": "globe",
   "diploma-islamic-finance": "coins",
 };
- 
+
 export const VALUES = [
   { titleEn: "Amanah (Trust)", titleUr: "امانت", textEn: "Every donation, record and answer is handled as a trust.", textUr: "ہر عطیہ، ریکارڈ اور جواب امانت سمجھ کر سنبھالا جاتا ہے۔" },
   { titleEn: "Ihsan (Excellence)", titleUr: "احسان", textEn: "We teach, serve and administer to the highest standard we can reach.", textUr: "ہم تدریس، خدمت اور انتظام میں بہترین معیار تک پہنچنے کی کوشش کرتے ہیں۔" },
   { titleEn: "Adl (Justice)", titleUr: "عدل", textEn: "Fair admissions, transparent fees and equitable welfare.", textUr: "منصفانہ داخلے، شفاف فیس اور غیر جانبدارانہ فلاح۔" },
   { titleEn: "Rahmah (Mercy)", titleUr: "رحمت", textEn: "Patience with learners and dignity for every person we serve.", textUr: "طلبہ کے ساتھ نرمی اور ہر فرد کی عزت۔" },
 ];
- 
+
 export const TIMELINE = [
   { year: "1989", titleEn: "Founded in a single madrasah hall", titleUr: "ایک مدرسہ ہال میں قیام", textEn: "Eleven students, two teachers and a borrowed library of 40 books.", textUr: "گیارہ طلبہ، دو اساتذہ اور 40 کتابوں کا عاریتی ذخیرہ۔" },
   { year: "1996", titleEn: "First purpose-built campus", titleUr: "پہلا مستقل کیمپس", textEn: "Opened on Canal Road, Lahore with hostel accommodation for 80 students.", textUr: "لاہور کینال روڈ پر 80 طلبہ کے ہاسٹل کے ساتھ افتتاح۔" },
@@ -205,7 +205,7 @@ export const TIMELINE = [
   { year: "2018", titleEn: "Degree programmes recognised", titleUr: "ڈگری پروگراموں کی منظوری", textEn: "Islamic Studies, Arabic and Islamic Finance degrees launched.", textUr: "اسلامی علوم، عربی اور اسلامی مالیات کے ڈگری پروگرام شروع۔" },
   { year: "2024", titleEn: "Digital library & welfare network", titleUr: "ڈیجیٹل کتب خانہ و فلاحی نیٹ ورک", textEn: "Over 6,200 graduates serving in 38 districts; library archived online.", textUr: "38 اضلاع میں 6200 سے زیادہ فارغ التحصیل؛ کتب خانہ آن لائن محفوظ۔" },
 ];
- 
+
 export const ACCREDITATIONS = [
   { name: "Higher Education Commission (placeholder)", nameUr: "ہائیر ایجوکیشن کمیشن (نمونہ)" },
   { name: "Wifaq ul Madaris (placeholder)", nameUr: "وفاق المدارس (نمونہ)" },
@@ -213,9 +213,9 @@ export const ACCREDITATIONS = [
   { name: "Punjab Charities Commission (placeholder)", nameUr: "پنجاب چیریٹیز کمیشن (نمونہ)" },
   { name: "International Islamic University affiliation (placeholder)", nameUr: "بین الاقوامی اسلامی یونیورسٹی الحاق (نمونہ)" },
 ];
- 
+
 export const DONATION_PRESETS = [1000, 5000, 25000, 85000];
- 
+
 export const DONATION_PURPOSES = [
   { key: "general", en: "General fund", ur: "عمومی فنڈ" },
   { key: "scholarships", en: "Scholarships", ur: "وظائف" },
@@ -226,7 +226,7 @@ export const DONATION_PURPOSES = [
   { key: "food", en: "Food & meals", ur: "خوراک" },
   { key: "qurbani", en: "Qurbani", ur: "قربانی" },
 ];
- 
+
 export const FATWA_CATEGORIES = [
   { key: "salah", en: "Salah", ur: "نماز" },
   { key: "zakat", en: "Zakat & Sadaqah", ur: "زکوٰۃ و صدقہ" },
@@ -240,14 +240,14 @@ export const FATWA_CATEGORIES = [
   { key: "daily", en: "Daily Life", ur: "روزمرہ زندگی" },
   { key: "other", en: "Other", ur: "دیگر" },
 ];
- 
+
 export const QURBANI_PURPOSES = [
   { key: "self", en: "Self", ur: "اپنے لیے" },
   { key: "family", en: "Family", ur: "خاندان" },
   { key: "deceased", en: "Deceased relative", ur: "مرحوم رشتہ دار" },
   { key: "sadaqah", en: "Sadaqah", ur: "صدقہ" },
 ];
- 
+
 export const PAYMENT_METHODS = [
   { key: "card", en: "Card (Stripe)", ur: "کارڈ (اسٹرپ)" },
   { key: "jazzcash", en: "JazzCash", ur: "جاز کیش" },
@@ -256,7 +256,7 @@ export const PAYMENT_METHODS = [
   { key: "bank_transfer", en: "Bank transfer", ur: "بینک ٹرانسفر" },
   { key: "cash", en: "Cash at office", ur: "دفتر میں نقد" },
 ];
- 
+
 export const IMAGES = {
   campusHero: "/images/campus-hero.jpg",
   campus: "https://images.pexels.com/photos/2982449/pexels-photo-2982449.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
@@ -277,6 +277,5 @@ export const IMAGES = {
   cow5: "https://images.pexels.com/photos/5216152/pexels-photo-5216152.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
   cow6: "https://images.pexels.com/photos/8633329/pexels-photo-8633329.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
 };
- 
+
 export const SEASONAL_KEYS = ["ramadan", "eid_fitr", "muharram", "rabi_awwal", "eid_adha", "academic"];
- 

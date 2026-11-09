@@ -66,7 +66,7 @@ export default function StudentsPage() {
             <div className="mt-4 rounded-md border border-deep/15 bg-light/60 p-4">
               <p className="text-sm font-semibold text-deep">Secure sign-in (placeholder)</p>
               <p className="mt-1 text-xs text-ink/65">
-                The student portal is hosted separately at <span className="font-mono">portal.alnoor.edu.pk</span> (placeholder). Results, attendance and fee ledgers require a student login and are never shown on public pages.
+                The student portal is hosted separately at <span className="font-mono">portal.ziaululoom.com</span> (placeholder). Results, attendance and fee ledgers require a student login and are never shown on public pages.
               </p>
               <div className="mt-2 grid gap-2 sm:grid-cols-2">
                 <input className="input" placeholder="Student ID" aria-label="Student ID" disabled />

@@ -4,11 +4,11 @@
  */
 export const dictionary: Record<string, [string, string]> = {
   // Global / chrome
-  "brand.name": ["Al-Noor Islamic University", "النور اسلامک یونیورسٹی"],
+  "brand.name": ["Jamia Ghousia Zia-Ul-Uloom", "جامعہ غوثیہ ضیاء العلوم"],
   "brand.tagline": ["Faith, Scholarship, Service", "ایمان، علم، خدمت"],
   "brand.placeholder": ["Demo institution — sample content", "نمونہ ادارہ — نمونہ مواد"],
-  "top.phone": ["+92 300 1234567", "+92 300 1234567"],
-  "top.email": ["info@alnoor.edu.pk", "info@alnoor.edu.pk"],
+  "top.phone": ["+92 51 5509922", "+92 51 5509922"],
+  "top.email": ["jamiaziaululoom92@gmail.com", "jamiaziaululoom92@gmail.com"],
   "top.address": ["Main Campus, Canal Road, Lahore, Pakistan", "مین کیمپس، کینال روڈ، لاہور، پاکستان"],
   "top.hours": ["Mon–Fri, 8:30 am – 4:30 pm", "پیر تا جمعہ، 8:30 صبح – 4:30 شام"],
   "nav.home": ["Home", "ہوم"],
@@ -104,7 +104,7 @@ export const dictionary: Record<string, [string, string]> = {
   "home.quick": ["Quick access", "فوری رسائی"],
   "home.quickSub": ["The services students and families use most.", "طلبہ اور خاندان سب سے زیادہ جو خدمات استعمال کرتے ہیں۔"],
   "home.rector": ["Rector's Welcome", "ریکٹر کا پیغام"],
-  "home.rectorRole": ["Rector, Al-Noor Islamic University", "ریکٹر، النور اسلامک یونیورسٹی"],
+  "home.rectorRole": ["Rector, Jamia Ghousia Zia-Ul-Uloom", "ریکٹر، جامعہ غوثیہ ضیاء العلوم"],
   "home.announcements": ["Announcements", "اعلانات"],
   "home.events": ["Events", "تقریبات"],
   "home.upcoming": ["Upcoming", "آنے والی"],

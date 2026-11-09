@@ -43,7 +43,7 @@ export default async function FatwaPage({ params }: { params: Promise<{ slug: st
             acceptedAnswer: {
               "@type": "Answer",
               text: fatwa.answerEn,
-              author: { "@type": "Organization", name: "Darul Ifta, Al-Noor Islamic University" },
+              author: { "@type": "Organization", name: "Darul Ifta, Jamia Ghousia Zia-Ul-Uloom" },
               dateCreated: new Date(fatwa.publishedAt).toISOString(),
             },
           },

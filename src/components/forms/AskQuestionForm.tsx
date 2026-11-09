@@ -25,7 +25,7 @@ export function AskQuestionForm() {
       const json = (await response.json()) as { ok: boolean; tracking?: string };
       if (!response.ok || !json.ok || !json.tracking) throw new Error("failed");
       const message = `Assalamu alaikum. My Darul Ifta tracking number is ${json.tracking}.`;
-      setResult({ tracking: json.tracking, whatsapp: `https://wa.me/923001234567?text=${encodeURIComponent(message)}` });
+      setResult({ tracking: json.tracking, whatsapp: `https://wa.me/92515509922?text=${encodeURIComponent(message)}` });
       setState("idle");
       setQuestion("");
     } catch {

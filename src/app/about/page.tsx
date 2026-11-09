@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     "Founded in 1989 in Lahore: our vision, mission, values, history, founder, chancellor, board of governors, faculty directory, accreditations and audited reports.",
   alternates: { canonical: "/about" },
-  openGraph: { title: "About Al-Noor Islamic University", images: ["/images/campus-hero.jpg"] },
+  openGraph: { title: "About Jamia Ghousia Zia-Ul-Uloom", images: ["/images/campus-hero.jpg"] },
 };
 
 export default async function AboutPage() {

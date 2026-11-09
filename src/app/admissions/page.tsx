@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Admissions 2027",
   description:
-    "Apply online to Al-Noor Islamic University: admission steps, key dates, required documents, fee structure, CNIC/B-Form uploads and frequently asked questions.",
+    "Apply online to Jamia Ghousia Zia-Ul-Uloom: admission steps, key dates, required documents, fee structure, CNIC/B-Form uploads and frequently asked questions.",
   alternates: { canonical: "/admissions" },
   openGraph: { title: "Admissions 2027", images: ["/images/campus-hero.jpg"] },
 };

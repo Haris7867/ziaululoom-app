@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Articles & News",
-  description: "Articles from Al-Noor Islamic University on Quranic Arabic, Zakat-funded scholarships, Qurbani and campus life.",
+  description: "Articles from Jamia Ghousia Zia-Ul-Uloom on Quranic Arabic, Zakat-funded scholarships, Qurbani and campus life.",
   alternates: { canonical: "/articles" },
 };
 

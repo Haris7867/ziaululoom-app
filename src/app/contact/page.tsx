@@ -7,7 +7,7 @@ import { IMAGES, UNIVERSITY } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact & Enquiries",
-  description: "Visit the campus on Canal Road, Lahore, call +92 300 1234567, request a callback, download the prospectus or subscribe to the newsletter.",
+  description: "Visit the campus on Canal Road, Lahore, call +92 51 5509922, request a callback, download the prospectus or subscribe to the newsletter.",
   alternates: { canonical: "/contact" },
   openGraph: { title: "Contact & Enquiries", images: ["/images/campus-hero.jpg"] },
 };

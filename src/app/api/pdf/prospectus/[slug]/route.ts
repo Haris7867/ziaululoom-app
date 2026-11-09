@@ -24,7 +24,7 @@ export async function GET(_request: Request, context: { params: Promise<{ slug: 
           { heading: "Declaration", lines: ["I confirm the information provided is accurate and I accept the university's academic regulations, code of conduct and refund policy.", "Signature: ____________________________   Date: ________________"] },
         ]
       : [
-          { heading: "About the university", lines: ["Founded in 1989 on Canal Road, Lahore, Al-Noor Islamic University teaches the classical Islamic sciences alongside recognised degree programmes. All content on this page is sample placeholder content."] },
+          { heading: "About the university", lines: ["Founded in 1989 on Canal Road, Lahore, Jamia Ghousia Zia-Ul-Uloom teaches the classical Islamic sciences alongside recognised degree programmes. All content on this page is sample placeholder content."] },
           { heading: "Programmes and indicative fees", lines: programmes.map((p) => `${p.titleEn} — ${p.level}, ${p.durationYears} years, ${p.mode}. Indicative fee: ${p.feePerYear > 0 ? formatPkr(p.feePerYear) + " per year" : "sponsored, no tuition fee"}.`) },
           { heading: "Admissions", lines: ["Applications are submitted online with a CNIC or B-Form and academic certificates. Shortlisted candidates attend an interview and, where required, an entry test. Zakat-funded scholarships cover up to 100% of fees for eligible students."] },
           { heading: "Campus life", lines: ["Residential hostel with mess, library and reading rooms, transport on four Lahore routes, sports ground, and a student welfare office offering counselling and financial support."] },
@@ -32,7 +32,7 @@ export async function GET(_request: Request, context: { params: Promise<{ slug: 
         ],
     footerNote: isForm
       ? "Admission form 2027 — sample placeholder"
-      : "Prospectus 2027 — sample placeholder content, Al-Noor Islamic University",
+      : "Prospectus 2027 — sample placeholder content, Jamia Ghousia Zia-Ul-Uloom",
   });
 
   return new NextResponse(Buffer.from(bytes) as unknown as BodyInit, {

@@ -7,10 +7,10 @@ import { CookieNotice, FloatingWhatsApp, SiteFooter } from "@/components/SiteFoo
 import { DecorBackground } from "@/components/Decor";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://alnoor.edu.pk"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://ziaululoom.com"),
   title: {
-    default: "Al-Noor Islamic University — Faith, Scholarship, Service",
-    template: "%s | Al-Noor Islamic University",
+    default: "Jamia Ghousia Zia-Ul-Uloom — Faith, Scholarship, Service",
+    template: "%s | Jamia Ghousia Zia-Ul-Uloom",
   },
   description:
     "A bilingual Islamic higher-education institution in Lahore, Pakistan: Alimiyyah and degree programmes, Darul Ifta, a digital library, Qurbani 2027 and student welfare.",
@@ -19,11 +19,11 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    title: "Al-Noor Islamic University",
+    title: "Jamia Ghousia Zia-Ul-Uloom",
     description: "Islamic higher education in Pakistan — programmes, fatawa, library, Qurbani 2027 and donations.",
     images: ["/images/campus-hero.jpg"],
     locale: "en_PK",
-    siteName: "Al-Noor Islamic University",
+    siteName: "Jamia Ghousia Zia-Ul-Uloom",
   },
   twitter: { card: "summary_large_image", images: ["/images/campus-hero.jpg"] },
   alternates: { canonical: "/" },

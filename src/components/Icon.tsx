@@ -100,7 +100,7 @@ export function Logo({ className = "" }: { className?: string }) {
         <path d="M24 40V27M16 40V30h16v10M20 34a4 4 0 0 1 8 0v6" stroke="#E9F6EE" strokeWidth="1.8" fill="none" strokeLinecap="round" />
       </svg>
       <span className="leading-tight">
-        <span className="block font-display text-[1.05rem] font-bold text-deep">Al-Noor Islamic University</span>
+        <span className="block font-display text-[1.05rem] font-bold text-deep">Jamia Ghousia Zia-Ul-Uloom</span>
         <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-fresh">Faith · Scholarship · Service</span>
       </span>
     </span>

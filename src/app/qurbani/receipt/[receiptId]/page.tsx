@@ -35,7 +35,7 @@ export default async function ReceiptPage({ params }: { params: Promise<{ receip
           <header className="bg-deep px-6 py-5 text-white">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
-                <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-gold">Al-Noor Islamic University</p>
+                <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-gold">Jamia Ghousia Zia-Ul-Uloom</p>
                 <h1 className="mt-1 text-2xl font-bold text-white sm:text-3xl"><T k="qurbani.receipt" /> · Qurbani 2027</h1>
                 <p className="text-xs text-white/75">{UNIVERSITY.addressEn} · {UNIVERSITY.email}</p>
               </div>
@@ -86,7 +86,7 @@ export default async function ReceiptPage({ params }: { params: Promise<{ receip
               <p className="mt-1 text-[0.68rem] text-ink/60">Qurbani in-charge signature</p>
             </div>
             <div className="rounded border border-deep/30 p-2 text-center">
-              <p className="text-[0.55rem] font-bold uppercase tracking-wider text-deep">Al-Noor Islamic University</p>
+              <p className="text-[0.55rem] font-bold uppercase tracking-wider text-deep">Jamia Ghousia Zia-Ul-Uloom</p>
               <p className="text-[0.6rem] font-bold text-deep">Qurbani Office</p>
               <p className="text-[0.55rem] text-ink/55">Official stamp (sample)</p>
             </div>

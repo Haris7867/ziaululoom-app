@@ -39,7 +39,7 @@ function wrap(text: string, font: PDFFont, size: number, maxWidth: number): stri
 }
 
 export function siteUrl(path: string): string {
-  const base = process.env.NEXT_PUBLIC_SITE_URL || "https://alnoor.edu.pk";
+  const base = process.env.NEXT_PUBLIC_SITE_URL || "https://ziaululoom.com";
   return `${base.replace(/\/$/, "")}${path}`;
 }
 
@@ -78,7 +78,7 @@ export async function buildQurbaniReceiptPdf(input: ReceiptInput): Promise<Uint8
   page.drawRectangle({ x: 0, y: 742, width, height: 100, color: GREEN });
   page.drawRectangle({ x: 0, y: 736, width, height: 6, color: GOLD });
   page.drawText("AL-NOOR ISLAMIC UNIVERSITY", { x: margin, y: 808, size: 17, font: bold, color: rgb(1, 1, 1) });
-  page.drawText(safe("Canal Road, Lahore, Pakistan  |  info@alnoor.edu.pk  |  +92 300 1234567"), {
+  page.drawText(safe("Canal Road, Lahore, Pakistan  |  jamiaziaululoom92@gmail.com  |  +92 51 5509922"), {
     x: margin, y: 790, size: 8.5, font: small, color: rgb(0.9, 0.98, 0.93),
   });
   page.drawText(`${safe(input.seasonName)} - QURBANI RECEIPT`, { x: margin, y: 763, size: 13, font: bold, color: rgb(1, 1, 1) });
@@ -123,7 +123,7 @@ export async function buildQurbaniReceiptPdf(input: ReceiptInput): Promise<Uint8
   y -= 16;
   const schedule: [string, string][] = [
     ["Expected slaughter", input.slaughterDate ? new Date(input.slaughterDate).toDateString() : "To be confirmed"],
-    ["Slaughter location", input.location ?? "Al-Noor University Farm, Lahore"],
+    ["Slaughter location", input.location ?? "Jamia Ghousia University Farm, Lahore"],
     ["Dispatch / distribution", input.dispatchDate ? new Date(input.dispatchDate).toDateString() : "Same day after packing"],
   ];
   for (const [label, value] of schedule) {
@@ -155,7 +155,7 @@ export async function buildQurbaniReceiptPdf(input: ReceiptInput): Promise<Uint8
   page.drawText("OFFICIAL STAMP (sample)", { x: width - margin - 130, y: signY + 10, size: 6.4, font: body, color: GREY });
 
   page.drawRectangle({ x: 0, y: 0, width, height: 74, color: LIGHT });
-  page.drawText("Al-Noor Islamic University - Qurbani Office, Canal Road, Lahore", { x: margin, y: 50, size: 8.4, font: body, color: GREEN });
+  page.drawText("Jamia Ghousia Zia-Ul-Uloom - Qurbani Office, Canal Road, Lahore", { x: margin, y: 50, size: 8.4, font: body, color: GREEN });
   page.drawText("This is a computer-generated receipt. Verify at /qurbani/status with your receipt ID and phone number.", { x: margin, y: 36, size: 7.6, font: body, color: GREY });
   page.drawText("Bilingual Urdu copy: your online receipt and email confirmation include Urdu text. Refunds follow the published refund policy.", { x: margin, y: 22, size: 7.6, font: body, color: GREY });
 
@@ -188,7 +188,7 @@ export async function buildContentPdf(options: {
   page.drawText("Digital Library & PDF Centre - sample server-generated document", {
     x: margin, y: pageHeight - 72, size: 8.4, font: body, color: rgb(0.9, 0.97, 0.92),
   });
-  page.drawText("Canal Road, Lahore, Pakistan  |  info@alnoor.edu.pk", {
+  page.drawText("Canal Road, Lahore, Pakistan  |  jamiaziaululoom92@gmail.com", {
     x: margin, y: pageHeight - 86, size: 8.4, font: body, color: rgb(0.9, 0.97, 0.92),
   });
 
@@ -252,7 +252,7 @@ export async function buildContentPdf(options: {
   const pages = pdf.getPages();
   pages.forEach((p, index) => {
     p.drawRectangle({ x: 0, y: 0, width: pageWidth, height: 46, color: LIGHT });
-    p.drawText(options.footerNote ?? "Sample placeholder document - Al-Noor Islamic University Digital Library", {
+    p.drawText(options.footerNote ?? "Sample placeholder document - Jamia Ghousia Zia-Ul-Uloom Digital Library", {
       x: margin, y: 28, size: 7.4, font: body, color: GREEN,
     });
     p.drawText(`Page ${index + 1} of ${pages.length}`, { x: pageWidth - margin - 60, y: 28, size: 7.4, font: body, color: GREY });

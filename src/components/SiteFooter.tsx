@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Icon, Logo } from "./Icon";
 import { useI18n } from "@/i18n/provider";
-import { PRAYER_TIMES, UNIVERSITY } from "@/lib/site";
+import { BRANCHES, PRAYER_TIMES, UNIVERSITY } from "@/lib/site";
 import { whatsappLink } from "@/lib/format";
 
 const QUICK = [
@@ -87,14 +87,20 @@ export function SiteFooter() {
         <div>
           <h3 className="text-base font-bold text-white">{t("footer.contact")}</h3>
           <ul className="mt-3 space-y-2.5 text-sm">
-            <li className="flex gap-2">
-              <Icon name="pin" size={16} className="mt-1 shrink-0 text-gold" />
-              <span>{t("top.address")}</span>
-            </li>
-            <li className="flex gap-2">
-              <Icon name="phone" size={16} className="mt-1 shrink-0 text-gold" />
-              <a href={`tel:${UNIVERSITY.phoneHref}`} dir="ltr" className="hover:text-white">{UNIVERSITY.phone}</a>
-            </li>
+            {BRANCHES.map((b) => (
+              <li key={b.nameEn} className="space-y-1 border-b border-white/10 pb-2.5">
+                <p className="font-semibold text-white">{pick(b.nameEn, b.nameUr)}</p>
+                <a href={b.mapLink} target="_blank" rel="noopener noreferrer" className="flex gap-2 hover:text-white">
+                  <Icon name="pin" size={14} className="mt-1 shrink-0 text-gold" />
+                  <span>{pick(b.addressEn, b.addressUr)}</span>
+                </a>
+                {b.phones.map((ph) => (
+                  <a key={ph} href={`tel:+92${ph.replace(/^0/, "").replace(/-/g, "")}`} dir="ltr" className="ml-6 flex hover:text-white">
+                    <Icon name="phone" size={14} className="mr-2 mt-1 text-gold" />{ph}
+                  </a>
+                ))}
+              </li>
+            ))}
             <li className="flex gap-2">
               <Icon name="mail" size={16} className="mt-1 shrink-0 text-gold" />
               <a href={`mailto:${UNIVERSITY.email}`} className="hover:text-white">{UNIVERSITY.email}</a>

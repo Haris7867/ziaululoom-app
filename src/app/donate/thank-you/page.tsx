@@ -26,7 +26,7 @@ export default async function ThankYouPage({ searchParams }: { searchParams: Pro
         </div>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <a
-            href={`https://wa.me/?text=${encodeURIComponent("Support scholarships at Al-Noor Islamic University: /donate")}`}
+            href={`https://wa.me/?text=${encodeURIComponent("Support scholarships at Jamia Ghousia Zia-Ul-Uloom: /donate")}`}
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-green"
