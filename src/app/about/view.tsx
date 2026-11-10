@@ -34,8 +34,8 @@ export function AboutView({ faculty, reports }: { faculty: FacultyRow[]; reports
       (department === "all" || person.department === department) &&
       `${person.nameEn} ${person.nameUr} ${person.roleEn} ${person.department}`.toLowerCase().includes(query.toLowerCase()),
   );
-  const leadership = faculty.filter((f) => f.isLeadership);
-  const board = faculty.filter((f) => f.isBoard);
+  const leadership = [{ id: 1, nameEn: "Sheikh ul Hadith Allama Peer Syed Zia Ul Haq Shah", nameUr: "شیخ الحدیث علامہ پیر سید ضیاء الحق شاہ", roleEn: "Founder & Principal", roleUr: "بانی و پرنسپل", bioEn: "Founder and Principal of Jamia Ghousia Zia-Ul-Uloom, Rawalpindi.", bioUr: "جامعہ غوثیہ ضیاء العلوم، راولپنڈی کے بانی و پرنسپل۔", qualifications: null }];
+  const board: typeof leadership = [];
   const reportsByYear = useMemo(() => {
     const map = new Map<number, ReportRow[]>();
     for (const report of reports) {
@@ -133,6 +133,7 @@ export function AboutView({ faculty, reports }: { faculty: FacultyRow[]; reports
             ))}
           </div>
 
+          {board.length > 0 && (
           <div className="mt-10">
             <SectionHeading eyebrow={t("about.board")} titleEn="Board of Governors" titleUr="بورڈ آف گورنرز" />
             <div className="grid gap-4 sm:grid-cols-3">
@@ -148,6 +149,7 @@ export function AboutView({ faculty, reports }: { faculty: FacultyRow[]; reports
               ))}
             </div>
           </div>
+          )}
         </div>
       </section>
 

@@ -209,11 +209,8 @@ export const TIMELINE = [
 ];
 
 export const ACCREDITATIONS = [
-  { name: "Higher Education Commission (placeholder)", nameUr: "ہائیر ایجوکیشن کمیشن (نمونہ)" },
-  { name: "Wifaq ul Madaris (placeholder)", nameUr: "وفاق المدارس (نمونہ)" },
-  { name: "Tanzeem ul Madaaris (placeholder)", nameUr: "تنظیم المدارس (نمونہ)" },
-  { name: "Punjab Charities Commission (placeholder)", nameUr: "پنجاب چیریٹیز کمیشن (نمونہ)" },
-  { name: "International Islamic University affiliation (placeholder)", nameUr: "بین الاقوامی اسلامی یونیورسٹی الحاق (نمونہ)" },
+  { name: "Higher Education Commission", nameUr: "ہائیر ایجوکیشن کمیشن" },
+  { name: "Tanzeem ul Madaris", nameUr: "تنظیم المدارس" },
 ];
 
 export const DONATION_PRESETS = [1000, 5000, 25000, 85000];
