@@ -397,7 +397,7 @@ export function HomeView({
               <div className="card flex items-center gap-2 p-3 !border-t-2"><Icon name="mail" size={18} className="text-deep" /> {UNIVERSITY.email}</div>
               <div className="card flex items-center gap-2 p-3 !border-t-2"><Icon name="clock" size={18} className="text-deep" /> {t("top.hours")}</div>
             </div>
-            <p className="mt-2 text-xs text-ink/55">{pick("Campus visits: main gate, Canal Road. Photo ID required at reception.", "کیمپس وزٹ: مین گیٹ، کینال روڈ۔ ریسیپشن پر شناختی کارڈ ضروری ہے۔")} {formatDate(new Date())}</p>
+            <p className="mt-2 text-xs text-ink/55">{pick("Campus visits: main gate, High Court Road, Rawalpindi. Photo ID required at reception.", "کیمپس وزٹ: مین گیٹ، ہائی کورٹ روڈ، راولپنڈی۔ ریسیپشن پر شناختی کارڈ ضروری ہے۔")} {formatDate(new Date())}</p>
           </div>
           <div className="card p-5">
             <h3 className="text-xl font-bold">{t("contact.enquiry")}</h3>

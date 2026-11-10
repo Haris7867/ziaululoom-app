@@ -86,17 +86,17 @@ export function SiteHeader() {
           <Link href="/" aria-label={t("brand.name")} className="shrink-0">
             <span className="hidden sm:inline-flex"><Logo /></span>
             <span className="inline-flex sm:hidden">
-              <Logo className="[&_span.font-display]:text-[0.92rem] [&_svg]:h-9 [&_svg]:w-9" />
+              <Logo className="[&_span.font-display]:text-[1rem] [&_img]:h-11 [&_img]:w-auto" />
             </span>
           </Link>
 
-          <nav aria-label="Main navigation" className="hidden items-center gap-0.5 xl:flex">
+          <nav aria-label="Main navigation" className="hidden min-w-0 items-center gap-0 xl:flex">
             {NAV.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 aria-current={isActive(item.href) ? "page" : undefined}
-                className={`rounded-md px-2 py-2 text-[0.82rem] font-semibold transition ${
+                className={`rounded-md px-1.5 py-2 text-[0.8rem] font-semibold transition ${
                   isActive(item.href) ? "bg-light text-deep" : "text-ink/80 hover:bg-light hover:text-deep"
                 }`}
               >
@@ -105,7 +105,7 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          <div className="hidden items-center gap-2 lg:flex">
+          <div className="hidden shrink-0 items-center gap-1.5 lg:flex">
             <LanguageToggle compact />
             <Link href="/donate" className="btn btn-gold !px-3 !py-1.5 !text-[0.8rem]">
               <Icon name="heart" size={14} /> {t("nav.donate")}

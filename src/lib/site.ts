@@ -8,10 +8,10 @@ export const UNIVERSITY = {
   whatsapp: "+92 51 5509922",
   email: "jamiaziaululoom92@gmail.com",
   admissionsEmail: "jamiaziaululoom92@gmail.com",
-  addressEn: "Rawalpindi, Pakistan",
-  addressUr: "راولپنڈی، پاکستان",
-  hoursEn: "Monday–Friday, 8:30 am – 4:30 pm",
-  hoursUr: "پیر تا جمعہ، صبح 8:30 تا شام 4:30",
+  addressEn: "Main Branch, High Court Road, Rawalpindi",
+  addressUr: "مرکزی شاخ، ہائی کورٹ روڈ، راولپنڈی",
+  hoursEn: "Daily 8:00 am – 12:00 pm · Friday closed",
+  hoursUr: "روزانہ صبح 8 تا دوپہر 12 · جمعہ بند",
   mapEmbed: "https://www.google.com/maps?q=Jamia+Ghousia+Zia+Ul+Uloom%2C+Line+No+07%2C+Eastridge+Housing+Society%2C+High+Court+Road%2C+Rawalpindi&output=embed",
   mapLink: "https://www.google.com/maps/search/?api=1&query=Jamia+Ghousia+Zia+Ul+Uloom%2C+Line+No+07%2C+Eastridge+Housing+Society%2C+High+Court+Road%2C+Rawalpindi",
   bank: {
@@ -43,8 +43,8 @@ export const UNIVERSITY = {
 
 export const BRANCHES = [
   {
-    nameEn: "Jamia Ghousia Zia Ul Uloom (Main Campus)",
-    nameUr: "جامعہ غوثیہ ضیاء العلوم (مرکزی کیمپس)",
+    nameEn: "Jamia Ghousia Zia Ul Uloom (Main Branch)",
+    nameUr: "جامعہ غوثیہ ضیاء العلوم (مرکزی شاخ)",
     addressEn: "Line No. 07, Eastridge Housing Society, High Court Road, Rawalpindi",
     addressUr: "لائن نمبر 07، ایسٹ رج ہاؤسنگ سوسائٹی، ہائی کورٹ روڈ، راولپنڈی",
     phones: ["051-5509922", "051-6164886", "0331-5323632"],
@@ -87,8 +87,8 @@ export const STATS = [
 export const HERO_SLIDES = [
   {
     image: "/images/campus-hero.jpg",
-    eyebrowEn: "Established 1989 · Lahore, Pakistan",
-    eyebrowUr: "قائم شدہ 1989 · لاہور، پاکستان",
+    eyebrowEn: "Established 1989 · Rawalpindi, Pakistan",
+    eyebrowUr: "قائم شدہ 1989 · راولپنڈی، پاکستان",
     titleEn: "Knowledge, character and service",
     titleUr: "علم، کردار اور خدمت",
     verseAr: "اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ",

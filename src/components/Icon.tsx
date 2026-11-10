@@ -92,17 +92,9 @@ export function iconExists(name: string): name is IconName {
 
 export function Logo({ className = "" }: { className?: string }) {
   return (
-    <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      <svg width="42" height="42" viewBox="0 0 48 48" aria-hidden="true" className="shrink-0">
-        <rect x="1.5" y="1.5" width="45" height="45" rx="10" fill="#00633A" />
-        <rect x="1.5" y="1.5" width="45" height="45" rx="10" fill="none" stroke="#D4A017" strokeWidth="1.2" />
-        <path d="M24 8l3.4 6.2L34 13l-3 5 3 5-6.6-1.2L24 28l-3.4-6.2L14 23l3-5-3-5 6.6 1.2L24 8Z" fill="#E9F6EE" opacity="0.92" />
-        <path d="M24 40V27M16 40V30h16v10M20 34a4 4 0 0 1 8 0v6" stroke="#E9F6EE" strokeWidth="1.8" fill="none" strokeLinecap="round" />
-      </svg>
-      <span className="leading-tight">
-        <span className="block font-display text-[1.05rem] font-bold text-deep">Jamia Ghousia Zia-Ul-Uloom</span>
-        <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-fresh">Faith · Scholarship · Service</span>
-      </span>
+    <span className={`inline-flex items-center gap-3 ${className}`}>
+      <img src="/images/logo.png" alt="" width={64} height={60} className="h-[3.75rem] w-auto shrink-0 object-contain" />
+      <span className="font-display text-[1.35rem] font-bold leading-tight text-deep">Jamia Ghousia Zia-Ul-Uloom</span>
     </span>
   );
 }
