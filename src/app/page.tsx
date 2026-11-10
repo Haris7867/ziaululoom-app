@@ -1,3 +1,4 @@
+import { TESTIMONIALS } from "@/lib/testimonials";
 import type { Metadata } from "next";
 import { HomeView } from "@/components/home/HomeView";
 import {
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const [announcements, events, programmes, photos, pdfs, fatawa, testimonials, articles, seasonal] = await Promise.all([
+  const [announcements, events, programmes, photos, pdfs, fatawa, _dbTestimonials, articles, seasonal] = await Promise.all([
     getAnnouncements(),
     getEvents(),
     getProgrammes(),
@@ -26,6 +27,7 @@ export default async function HomePage() {
     getArticles(),
     getSeasonalBanners(),
   ]);
+  const testimonials = TESTIMONIALS.map((item, i) => ({ id: i + 1, ...item }));
 
   return (
     <HomeView
