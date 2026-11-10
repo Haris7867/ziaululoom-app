@@ -93,8 +93,8 @@ export function iconExists(name: string): name is IconName {
 export function Logo({ className = "" }: { className?: string }) {
   return (
     <span className={`inline-flex items-center gap-3 ${className}`}>
-      <img src="/images/logo.png" alt="" width={64} height={60} className="h-[3.75rem] w-auto shrink-0 object-contain" />
-      <span className="font-display text-[1.35rem] font-bold leading-tight text-deep">Jamia Ghousia Zia-Ul-Uloom</span>
+      <img src="/images/logo.png" alt="" width={64} height={60} className="h-14 w-auto shrink-0 object-contain" />
+      <span className="font-display text-[1.2rem] font-bold leading-tight text-deep">Jamia Ghousia Zia-Ul-Uloom</span>
     </span>
   );
 }

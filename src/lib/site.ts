@@ -1,3 +1,6 @@
+// Set to true to show donation pages, buttons and sections again.
+export const SHOW_DONATIONS = false;
+
 export const UNIVERSITY = {
   nameEn: "Jamia Ghousia Zia-Ul-Uloom",
   nameUr: "جامعہ غوثیہ ضیاء العلوم",
@@ -33,7 +36,7 @@ export const UNIVERSITY = {
     },
   },
   social: {
-    facebook: "https://facebook.com/",
+    facebook: "https://www.facebook.com/ziaululoom.92",
     youtube: "https://youtube.com/",
     instagram: "https://instagram.com/",
     x: "https://x.com/",
@@ -139,7 +142,6 @@ export const HERO_SLIDES = [
 
 export const QUICK_TILES = [
   { href: "/admissions", icon: "cap", titleKey: "nav.admissions", textEn: "Apply for 2027", textUr: "2027 کے لیے درخواست" },
-  { href: "/donate", icon: "heart", titleKey: "nav.donate", textEn: "Zakat & Sadaqah", textUr: "زکوٰۃ و صدقہ" },
   { href: "/api/pdf/prospectus/prospectus-2027", icon: "pdf", titleKey: "admissions.prospectus", textEn: "Download PDF", textUr: "پی ڈی ایف ڈاؤن لوڈ" },
   { href: "/darul-ifta/ask", icon: "question", titleKey: "home.askQuestion", textEn: "Private & tracked", textUr: "نجی اور ٹریک شدہ" },
   { href: "/library?category=Khutbat", icon: "book", titleKey: "home.pdf", textEn: "Khutbat & Durus", textUr: "خطبات و دروس" },

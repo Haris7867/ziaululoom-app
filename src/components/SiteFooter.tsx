@@ -39,11 +39,10 @@ export function SiteFooter() {
           </div>
           <p className="mt-4 text-sm leading-relaxed text-white/80">{t("footer.aboutText")}</p>
           <div className="mt-4 flex flex-wrap gap-2">
-            <a href={UNIVERSITY.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="rounded-full border border-white/30 p-2 transition hover:bg-white/10"><Icon name="facebook" size={16} /></a>
-            <a href={UNIVERSITY.social.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="rounded-full border border-white/30 p-2 transition hover:bg-white/10"><Icon name="youtube" size={16} /></a>
-            <a href={UNIVERSITY.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="rounded-full border border-white/30 p-2 transition hover:bg-white/10"><Icon name="instagram" size={16} /></a>
-            <a href={UNIVERSITY.social.x} target="_blank" rel="noopener noreferrer" aria-label="X" className="rounded-full border border-white/30 p-2 transition hover:bg-white/10"><Icon name="x" size={16} /></a>
-            <a href={UNIVERSITY.social.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="rounded-full border border-white/30 p-2 transition hover:bg-white/10"><Icon name="whatsapp" size={16} /></a>
+            <a href={UNIVERSITY.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="rounded-full border border-white/30 p-3 transition hover:bg-white/10"><Icon name="facebook" size={24} /></a>
+
+
+            <a href={UNIVERSITY.social.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="rounded-full border border-white/30 p-3 transition hover:bg-white/10"><Icon name="whatsapp" size={24} /></a>
           </div>
         </div>
 
@@ -110,16 +109,7 @@ export function SiteFooter() {
               <span>{t("top.hours")}</span>
             </li>
           </ul>
-          <div className="mt-3 overflow-hidden rounded-lg border border-white/20">
-            <iframe
-              title={t("footer.map")}
-              src={UNIVERSITY.mapEmbed}
-              className="h-32 w-full"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
-          <Link href={UNIVERSITY.mapLink} target="_blank" className="mt-2 inline-flex items-center gap-1 text-xs text-gold hover:text-white">
+                    <Link href={UNIVERSITY.mapLink} target="_blank" className="mt-2 inline-flex items-center gap-1 text-xs text-gold hover:text-white">
             {t("footer.map")} <Icon name="external" size={12} />
           </Link>
         </div>

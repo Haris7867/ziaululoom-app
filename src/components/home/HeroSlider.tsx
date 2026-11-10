@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useI18n } from "@/i18n/provider";
-import { HERO_SLIDES } from "@/lib/site";
+import { HERO_SLIDES, SHOW_DONATIONS } from "@/lib/site";
 import { Icon } from "@/components/Icon";
 
 export function HeroSlider() {
@@ -68,14 +68,14 @@ export function HeroSlider() {
             <div className="absolute inset-0 bg-gradient-to-r from-deep/95 via-deep/75 to-deep/25" />
             <div className="container-x relative flex h-full flex-col justify-center pb-16 pt-10 text-white">
               <p className="eyebrow !text-gold">{pick(slide.eyebrowEn, slide.eyebrowUr)}</p>
-              <h1 className="mt-2 max-w-2xl text-4xl font-bold leading-[1.1] text-white sm:text-5xl lg:text-6xl">
+              <h1 className="mt-2 max-w-2xl text-4xl font-bold leading-[1.1] !text-white sm:text-5xl lg:text-6xl">
                 {pick(slide.titleEn, slide.titleUr)}
               </h1>
               <p className="arabic mt-4 font-display text-xl text-light/95" dir="rtl" lang="ar">{slide.verseAr}</p>
               <p className="mt-1.5 max-w-xl text-sm text-white/85 sm:text-base">{pick(slide.verseEn, slide.verseUr)}</p>
               <div className="mt-6 flex flex-wrap gap-2.5">
                 <Link href="/academics" className="btn btn-green">{t("home.explore")} <Icon name="arrow" size={16} /></Link>
-                <Link href="/donate" className="btn btn-gold">{t("nav.donate")} <Icon name="heart" size={16} /></Link>
+                {SHOW_DONATIONS && <Link href="/donate" className="btn btn-gold">{t("nav.donate")} <Icon name="heart" size={16} /></Link>}
               </div>
             </div>
           </div>

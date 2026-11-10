@@ -13,7 +13,7 @@ import {
 } from "@/components/cards";
 import { EnquiryForm } from "@/components/forms/EnquiryForm";
 import { DonationForm } from "@/components/forms/DonationForm";
-import { QUICK_TILES, STATS, UNIVERSITY, WHY_US, DONATION_PRESETS, DONATION_PURPOSES, IMAGES } from "@/lib/site";
+import { QUICK_TILES, SHOW_DONATIONS, STATS, UNIVERSITY, WHY_US, DONATION_PRESETS, DONATION_PURPOSES, IMAGES } from "@/lib/site";
 import { eventPhase, formatDate, formatPkr, whatsappLink } from "@/lib/format";
 
 type Announcement = { id: number; titleEn: string; titleUr: string; date: Date | string };
@@ -311,7 +311,7 @@ export function HomeView({
         </div>
       </section>
 
-      {/* 12. Donation band — only deep-green full-width band in content */}
+      {SHOW_DONATIONS && (
       <section className="bg-deep py-10 text-white md:py-14">
         <div className="container-x grid gap-7 lg:grid-cols-[1fr_1.05fr] lg:items-center">
           <div>
@@ -357,6 +357,7 @@ export function HomeView({
           </div>
         </div>
       </section>
+      )}
 
       {/* 13. Testimonials */}
       <section className="section">

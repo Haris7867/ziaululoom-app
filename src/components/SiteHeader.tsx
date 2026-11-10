@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Icon, Logo } from "./Icon";
 import { useI18n } from "@/i18n/provider";
-import { UNIVERSITY } from "@/lib/site";
+import { SHOW_DONATIONS, UNIVERSITY } from "@/lib/site";
 import { whatsappLink } from "@/lib/format";
 
 const NAV = [
@@ -86,7 +86,7 @@ export function SiteHeader() {
           <Link href="/" aria-label={t("brand.name")} className="shrink-0">
             <span className="hidden sm:inline-flex"><Logo /></span>
             <span className="inline-flex sm:hidden">
-              <Logo className="[&_span.font-display]:text-[1rem] [&_img]:h-11 [&_img]:w-auto" />
+              <Logo className="[&_span.font-display]:text-[1rem] [&_img]:h-10 [&_img]:w-auto" />
             </span>
           </Link>
 
@@ -107,9 +107,9 @@ export function SiteHeader() {
 
           <div className="hidden shrink-0 items-center gap-1.5 lg:flex">
             <LanguageToggle compact />
-            <Link href="/donate" className="btn btn-gold !px-3 !py-1.5 !text-[0.8rem]">
+            {SHOW_DONATIONS && <Link href="/donate" className="btn btn-gold !px-3 !py-1.5 !text-[0.8rem]">
               <Icon name="heart" size={14} /> {t("nav.donate")}
-            </Link>
+            </Link>}
             <Link href="/admissions" className="btn btn-green !px-3 !py-1.5 !text-[0.8rem]">
               {t("nav.apply")}
             </Link>
@@ -126,9 +126,9 @@ export function SiteHeader() {
 
           <div className="flex items-center gap-2 lg:hidden">
             <LanguageToggle compact />
-            <Link href="/donate" className="btn btn-gold !px-2.5 !py-1.5 !text-[0.75rem]">
+            {SHOW_DONATIONS && <Link href="/donate" className="btn btn-gold !px-2.5 !py-1.5 !text-[0.75rem]">
               {t("nav.donate")}
-            </Link>
+            </Link>}
             <button
               type="button"
               onClick={() => setOpen(true)}
@@ -176,9 +176,9 @@ export function SiteHeader() {
                   <Icon name="chevron" size={16} className="text-fresh" />
                 </Link>
               ))}
-              <Link href="/donate" className="mx-1 mt-3 flex items-center justify-between rounded-md bg-light px-3 py-3 text-sm font-semibold text-deep">
+              {SHOW_DONATIONS && <Link href="/donate" className="mx-1 mt-3 flex items-center justify-between rounded-md bg-light px-3 py-3 text-sm font-semibold text-deep">
                 {t("nav.donate")} <Icon name="heart" size={16} />
-              </Link>
+              </Link>}
             </nav>
             <div className="space-y-2 border-t border-deep/10 p-4">
               <Link href="/admissions" className="btn btn-green w-full">{t("nav.apply")}</Link>
