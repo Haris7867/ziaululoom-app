@@ -62,8 +62,8 @@ export function PageHero({
   const { pick } = useI18n();
   return (
     <section className="hero-dark relative isolate overflow-hidden bg-deep text-white">
-      <img src={image} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover opacity-45" fetchPriority="high" />
-      <div className="absolute inset-0 bg-gradient-to-r from-deep/95 via-deep/80 to-deep/45" aria-hidden="true" />
+      <img src={image} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover opacity-90" fetchPriority="high" />
+      <div className="absolute inset-0 bg-gradient-to-r from-deep/90 via-deep/60 to-deep/10" aria-hidden="true" />
       <div className={`container-x relative ${compact ? "py-10" : "py-14 md:py-20"}`}>
         {(eyebrowEn || eyebrowUr) && (
           <p className="mb-2 text-[0.7rem] font-bold uppercase tracking-[0.2em] text-gold">

@@ -8,13 +8,11 @@ import { BRANCHES, PRAYER_TIMES, UNIVERSITY } from "@/lib/site";
 import { whatsappLink } from "@/lib/format";
 
 const QUICK = [
-  { href: "/admissions", key: "nav.admissions" },
   { href: "/academics", key: "nav.academics" },
   { href: "/library", key: "nav.library" },
   { href: "/darul-ifta/ask", key: "home.askQuestion" },
   { href: "/events", key: "nav.events" },
   { href: "/gallery", key: "gallery.title" },
-  { href: "/students#portal", key: "students.portal" },
   { href: "/seasonal", key: "seasonal.ramadan" },
   { href: "/qurbani/status", key: "qurbani.checkBooking" },
 ];

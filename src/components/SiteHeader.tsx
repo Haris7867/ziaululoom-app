@@ -13,7 +13,7 @@ type NavItem =
   | ({ type: "link" } & NavLeaf)
   | { type: "group"; en: string; ur: string; children: NavLeaf[] };
 
-// Header menu: 6 items. Academics, Admissions and Students are merged into one dropdown.
+// Header menu: 6 items. Academics and Students are merged into one dropdown.
 const NAV: NavItem[] = [
   { type: "link", href: "/", key: "nav.home" },
   { type: "link", href: "/about", key: "nav.about" },
@@ -21,9 +21,7 @@ const NAV: NavItem[] = [
     type: "group", en: "Academics", ur: "تعلیمات",
     children: [
       { href: "/academics", en: "Programmes", ur: "پروگرام" },
-      { href: "/admissions", key: "nav.admissions" },
       { href: "/students", en: "Student Life", ur: "طلبہ کی زندگی" },
-      { href: "/students#portal", en: "Student Portal", ur: "طلبہ پورٹل" },
     ],
   },
   {
@@ -170,9 +168,6 @@ export function SiteHeader() {
             {SHOW_DONATIONS && <Link href="/donate" className="btn btn-gold !px-3 !py-1.5 !text-[0.8rem]">
               <Icon name="heart" size={14} /> {t("nav.donate")}
             </Link>}
-            <Link href="/admissions" className="btn btn-gold !px-4 !py-2 !text-[0.85rem]">
-              {t("nav.apply")}
-            </Link>
             <a
               href={whatsappLink(UNIVERSITY.whatsapp, "Assalamu alaikum, I would like to ask about the university.")}
               target="_blank"
@@ -257,7 +252,6 @@ export function SiteHeader() {
               </Link>}
             </nav>
             <div className="space-y-2 border-t border-deep/10 p-4">
-              <Link href="/admissions" className="btn btn-primary w-full">{t("nav.apply")}</Link>
               <a
                 href={whatsappLink(UNIVERSITY.whatsapp, "Assalamu alaikum, I would like to ask about the university.")}
                 target="_blank"

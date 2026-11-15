@@ -144,7 +144,7 @@ export const QUICK_TILES = [
   { href: "/api/pdf/prospectus/prospectus-2027", image: "/images/campus-angle.jpg", titleKey: "admissions.prospectus", textEn: "Download PDF", textUr: "پی ڈی ایف ڈاؤن لوڈ" },
   { href: "/darul-ifta/ask", image: "/images/scholar-reading.jpg", titleKey: "home.askQuestion", textEn: "Private & tracked", textUr: "نجی اور ٹریک شدہ" },
   { href: "/library?category=Khutbat", image: "/images/books-c.jpg", titleKey: "home.pdf", textEn: "Khutbat & Durus", textUr: "خطبات و دروس" },
-  { href: "/students#portal", image: "/images/students-hall.jpg", titleKey: "students.portal", textEn: "Secure login", textUr: "محفوظ لاگ ان" },
+  { href: "/students", image: "/images/students-hall.jpg", titleKey: "home.studentLife", textEn: "Hostel & campus", textUr: "ہاسٹل و کیمپس" },
   { href: "/qurbani", image: "/images/dome-city.jpg", titleKey: "qurbani.title", textEn: "Book a hissa", textUr: "حصہ بک کریں" },
 ];
 
@@ -217,7 +217,7 @@ export const FATWA_IMAGES = ["/images/books-b.jpg", "/images/books-a.jpg", "/ima
 export const VALUES = [
   { titleEn: "Amanah (Trust)", titleUr: "امانت", textEn: "Every donation, record and answer is handled as a trust.", textUr: "ہر عطیہ، ریکارڈ اور جواب امانت سمجھ کر سنبھالا جاتا ہے۔" },
   { titleEn: "Ihsan (Excellence)", titleUr: "احسان", textEn: "We teach, serve and administer to the highest standard we can reach.", textUr: "ہم تدریس، خدمت اور انتظام میں بہترین معیار تک پہنچنے کی کوشش کرتے ہیں۔" },
-  { titleEn: "Adl (Justice)", titleUr: "عدل", textEn: "Fair admissions, transparent fees and equitable welfare.", textUr: "منصفانہ داخلے، شفاف فیس اور غیر جانبدارانہ فلاح۔" },
+  { titleEn: "Adl (Justice)", titleUr: "عدل", textEn: "Fair dealing, transparent fees and equitable welfare.", textUr: "منصفانہ معاملات، شفاف فیس اور غیر جانبدارانہ فلاح۔" },
   { titleEn: "Rahmah (Mercy)", titleUr: "رحمت", textEn: "Patience with learners and dignity for every person we serve.", textUr: "طلبہ کے ساتھ نرمی اور ہر فرد کی عزت۔" },
 ];
 
@@ -231,8 +231,21 @@ export const TIMELINE = [
 ];
 
 export const ACCREDITATIONS = [
-  { name: "Higher Education Commission", nameUr: "ہائیر ایجوکیشن کمیشن" },
-  { name: "Tanzeem ul Madaris", nameUr: "تنظیم المدارس" },
+  { name: "Higher Education Commission", nameUr: "ہائیر ایجوکیشن کمیشن", logo: "/images/logo-hec.png" },
+  { name: "Tanzeem ul Madaris", nameUr: "تنظیم المدارس", logo: "/images/logo-tanzeem.png" },
+];
+
+// Teachers shown on the About page (names only).
+export const TEACHERS = [
+  { en: "Sheikh ul Hadith Allama Peer Syed Zia Ul Haq Shah Sahib", ur: "شیخ الحدیث علامہ پیر سید ضیاء الحق شاہ صاحب", photo: "/images/rector-sheikh.jpg" },
+  { en: "Sayyid Ihsanul Haq Shah Sahib", ur: "سید احسان الحق شاہ صاحب" },
+  { en: "Sayyid Inayatul Haq Shah Sahib", ur: "سید عنایت الحق شاہ صاحب" },
+  { en: "Sayyid Faridul Haq Shah Sahib", ur: "سید فرید الحق شاہ صاحب" },
+  { en: "Sayyid Shamsul Haq Shah Sahib", ur: "سید شمس الحق شاہ صاحب" },
+  { en: "Maulana Hidayatullah Sahib", ur: "مولانا ہدایت اللہ صاحب" },
+  { en: "Maulana Amir Afzal Sahib", ur: "مولانا امیر افضل صاحب" },
+  { en: "Maulana Tanveer Sahib", ur: "مولانا تنویر صاحب" },
+  { en: "Maulana Ikramul Haq Qureshi Sahib", ur: "مولانا اکرام الحق قریشی صاحب" },
 ];
 
 export const DONATION_PRESETS = [1000, 5000, 25000, 85000];

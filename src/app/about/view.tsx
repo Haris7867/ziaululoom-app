@@ -1,12 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import Link from "next/link";
 import { Icon } from "@/components/Icon";
-import { PageHero, SectionHeading, EmptyState, Callout } from "@/components/ui";
-import { AnimatedDivider } from "@/components/Decor";
+import { PageHero, SectionHeading, Callout } from "@/components/ui";
 import { useI18n } from "@/i18n/provider";
-import { ACCREDITATIONS, IMAGES, TIMELINE, VALUES } from "@/lib/site";
+import { ACCREDITATIONS, IMAGES, TEACHERS, VALUES } from "@/lib/site";
 
 type FacultyRow = {
   id: number; nameEn: string; nameUr: string; roleEn: string; roleUr: string; department: string;
@@ -23,17 +22,8 @@ function Monogram({ name }: { name: string }) {
   );
 }
 
-export function AboutView({ faculty, reports }: { faculty: FacultyRow[]; reports: ReportRow[] }) {
+export function AboutView({ reports }: { faculty?: FacultyRow[]; reports: ReportRow[] }) {
   const { t, pick } = useI18n();
-  const [query, setQuery] = useState("");
-  const [department, setDepartment] = useState("all");
-
-  const departments = useMemo(() => Array.from(new Set(faculty.map((f) => f.department))), [faculty]);
-  const directory = faculty.filter(
-    (person) =>
-      (department === "all" || person.department === department) &&
-      `${person.nameEn} ${person.nameUr} ${person.roleEn} ${person.department}`.toLowerCase().includes(query.toLowerCase()),
-  );
   const leadership = [{ id: 1, nameEn: "Sheikh ul Hadith Allama Peer Syed Zia Ul Haq Shah Sahib", nameUr: "شیخ الحدیث علامہ پیر سید ضیاء الحق شاہ صاحب", roleEn: "Founder & Principal", roleUr: "بانی و پرنسپل", bioEn: "Founder and Principal of Jamia Ghousia Zia-Ul-Uloom, Rawalpindi.", bioUr: "جامعہ غوثیہ ضیاء العلوم، راولپنڈی کے بانی و پرنسپل۔", qualifications: null }];
   const board: typeof leadership = [];
   const reportsByYear = useMemo(() => {
@@ -61,7 +51,9 @@ export function AboutView({ faculty, reports }: { faculty: FacultyRow[]; reports
 
       <section className="section">
         <div className="container-x grid gap-5 lg:grid-cols-3">
-          <div className="card p-5">
+          <div className="card overflow-hidden">
+            <img src="/images/campus-angle.jpg" alt="" loading="lazy" className="h-40 w-full object-cover" />
+            <div className="p-5">
             <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-light text-deep"><Icon name="sun" size={20} /></span>
             <h2 className="mt-3 text-2xl">{t("about.vision")}</h2>
             <p className="mt-2 text-sm text-ink/80">
@@ -70,8 +62,11 @@ export function AboutView({ faculty, reports }: { faculty: FacultyRow[]; reports
                 "ایسا معتبر مرکزِ علم بننا جس کے فارغ التحصیل گہرے علم کو خلوصِ خدمت سے جوڑیں، اور جس کی تحقیق مسلم خاندانوں کے حقیقی سوالات کا جواب دے۔",
               )}
             </p>
+            </div>
           </div>
-          <div className="card p-5">
+          <div className="card overflow-hidden">
+            <img src="/images/books-b.jpg" alt="" loading="lazy" className="h-40 w-full object-cover" />
+            <div className="p-5">
             <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-light text-deep"><Icon name="book" size={20} /></span>
             <h2 className="mt-3 text-2xl">{t("about.mission")}</h2>
             <p className="mt-2 text-sm text-ink/80">
@@ -80,8 +75,11 @@ export function AboutView({ faculty, reports }: { faculty: FacultyRow[]; reports
                 "قرآن، حدیث، فقہ اور عربی کو علمی مضبوطی سے پڑھانا؛ رہنمائی اور عبادت کے ذریعے کردار بنانا؛ اور زکوٰۃ سے چلنے والے وظائف، خوراک اور ہاسٹل کے ذریعے مالی رکاوٹیں دور کرنا۔",
               )}
             </p>
+            </div>
           </div>
-          <div className="card p-5">
+          <div className="card overflow-hidden">
+            <img src="/images/dome.jpg" alt="" loading="lazy" className="h-40 w-full object-cover" />
+            <div className="p-5">
             <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-light text-deep"><Icon name="star" size={20} /></span>
             <h2 className="mt-3 text-2xl">{t("about.values")}</h2>
             <ul className="mt-2 space-y-1.5 text-sm text-ink/80">
@@ -92,27 +90,8 @@ export function AboutView({ faculty, reports }: { faculty: FacultyRow[]; reports
                 </li>
               ))}
             </ul>
+            </div>
           </div>
-        </div>
-      </section>
-
-      <AnimatedDivider />
-
-      <section className="section bg-light/50">
-        <div className="container-x">
-          <SectionHeading eyebrow="1989 — today" titleEn="Our history" titleUr="ہماری تاریخ" subtitleEn="Six moments that shaped the university." subtitleUr="چھ لمحے جنہوں نے یونیورسٹی کی تشکیل کی۔" />
-          <ol className="relative ms-3 border-s-2 border-deep/20 ps-6">
-            {TIMELINE.map((item, index) => (
-              <li key={item.year} className="relative pb-6 last:pb-0">
-                <span className="absolute -start-[2.15rem] flex h-6 w-6 items-center justify-center rounded-full border-2 border-fresh bg-white text-[0.6rem] font-bold text-deep">
-                  {index + 1}
-                </span>
-                <p className="font-display text-xl font-bold text-deep">{item.year}</p>
-                <p className="text-base font-semibold text-ink">{pick(item.titleEn, item.titleUr)}</p>
-                <p className="text-sm text-ink/75">{pick(item.textEn, item.textUr)}</p>
-              </li>
-            ))}
-          </ol>
         </div>
       </section>
 
@@ -153,47 +132,29 @@ export function AboutView({ faculty, reports }: { faculty: FacultyRow[]; reports
         </div>
       </section>
 
-      <section className="section bg-light/50">
+      <section className="relative isolate overflow-hidden section">
+        <img src="/images/dome-city.jpg" alt="" aria-hidden="true" className="absolute inset-0 -z-10 h-full w-full object-cover" loading="lazy" />
+        <div className="absolute inset-0 -z-10 bg-deep/85" aria-hidden="true" />
         <div className="container-x">
-          <SectionHeading eyebrow={t("about.faculty")} titleEn="Faculty & Scholars directory" titleUr="اساتذہ و علماء ڈائریکٹری" subtitleEn={t("about.facultySub")} subtitleUr={t("about.facultySub")} />
-          <div className="mb-4 flex flex-col gap-2 sm:flex-row">
-            <div className="relative flex-1">
-              <span className="pointer-events-none absolute inset-y-0 start-3 flex items-center text-ink/40"><Icon name="search" size={18} /></span>
-              <input
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                className="input !ps-10"
-                placeholder={t("about.searchFaculty")}
-                aria-label={t("about.searchFaculty")}
-              />
-            </div>
-            <select value={department} onChange={(e) => setDepartment(e.target.value)} className="select sm:!w-60" aria-label={t("academics.department")}>
-              <option value="all">{t("common.all")} — {t("academics.department")}</option>
-              {departments.map((d) => <option key={d} value={d}>{d}</option>)}
-            </select>
+          <div className="mb-6 text-white">
+            <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-gold">{t("about.faculty")}</p>
+            <h2 className="mt-1 text-3xl font-bold !text-white md:text-4xl">{pick("Our teachers", "ہمارے اساتذہ")}</h2>
           </div>
-          {directory.length === 0 ? (
-            <EmptyState>{t("common.notFound")}</EmptyState>
-          ) : (
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {directory.map((person) => (
-                <article key={`${person.id}-${person.department}-${person.roleEn}`} className="card p-4">
-                  <div className="flex items-start gap-3">
-                    <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-deep font-display text-sm font-bold text-white">
-                      {person.nameEn.split(" ").slice(0, 2).map((p) => p[0]).join("")}
-                    </span>
-                    <div>
-                      <h3 className="text-base font-bold leading-snug">{pick(person.nameEn, person.nameUr)}</h3>
-                      <p className="text-xs font-semibold text-fresh">{pick(person.roleEn, person.roleUr)}</p>
-                      <span className="badge mt-1 !text-[0.62rem]">{person.department}</span>
-                    </div>
-                  </div>
-                  <p className="mt-2 text-xs text-ink/75">{pick(person.bioEn, person.bioUr)}</p>
-                  {person.qualifications && <p className="mt-1 text-[0.68rem] text-ink/50">{person.qualifications}</p>}
-                </article>
-              ))}
-            </div>
-          )}
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {TEACHERS.map((teacher) => (
+              <article key={teacher.en} className="card flex items-center gap-4 p-4">
+                {teacher.photo ? (
+                  <img src={teacher.photo} alt={teacher.en} loading="lazy" className="h-16 w-16 shrink-0 rounded-full border-2 border-fresh object-cover object-top" />
+                ) : (
+                  <span className="inline-flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-deep font-display text-lg font-bold text-white">
+                    {teacher.en.split(" ").slice(1, 3).map((p) => p[0]).join("")}
+                  </span>
+                )}
+                <h3 className="text-base font-bold leading-snug text-deep">{pick(teacher.en, teacher.ur)}</h3>
+              </article>
+            ))}
+          </div>
+          <p className="mt-5 text-sm text-white/85">{pick("…and many other respected teachers.", "…اور بہت سے دیگر قابلِ احترام اساتذہ۔")}</p>
         </div>
       </section>
 
@@ -204,15 +165,15 @@ export function AboutView({ faculty, reports }: { faculty: FacultyRow[]; reports
             <div className="grid gap-2.5 sm:grid-cols-2">
               {ACCREDITATIONS.map((item) => (
                 <div key={item.name} className="flex items-center gap-2.5 rounded-lg border border-deep/15 bg-white p-3">
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded border border-deep/20 text-[0.6rem] font-bold text-deep">LOGO</span>
-                  <span className="text-xs font-semibold text-ink/75">{pick(item.name, item.nameUr)}</span>
+                  <img src={item.logo} alt={item.name} loading="lazy" className="h-14 w-14 shrink-0 rounded object-contain" />
+                  <span className="text-sm font-semibold text-ink/80">{pick(item.name, item.nameUr)}</span>
                 </div>
               ))}
             </div>
             <Callout icon="shield" title={pick("Verification", "تصدیق")}>
               {pick(
-                "Degree recognition and affiliation documents can be inspected at the registrar's office. All logos above are placeholders.",
-                "ڈگری کی منظوری اور الحاق کی دستاویزات رجسٹرار دفتر میں دیکھی جا سکتی ہیں۔ اوپر تمام لوگو نمونے ہیں۔",
+                "Degree recognition and affiliation documents can be inspected at the registrar's office.",
+                "ڈگری کی منظوری اور الحاق کی دستاویزات رجسٹرار دفتر میں دیکھی جا سکتی ہیں۔",
               )}
             </Callout>
           </div>

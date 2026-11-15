@@ -22,6 +22,7 @@ export const dictionary: Record<string, [string, string]> = {
   "nav.donate": ["Donate", "عطیہ"],
   "nav.students": ["Students", "طلبہ"],
   "nav.contact": ["Contact", "رابطہ"],
+  "home.studentLife": ["Student Life", "طلبہ کی زندگی"],
   "nav.apply": ["Apply Now", "ابھی درخواست دیں"],
   "nav.langToggle": ["اردو", "English"],
   "nav.langLabel": ["Switch language", "زبان تبدیل کریں"],
@@ -133,7 +134,7 @@ export const dictionary: Record<string, [string, string]> = {
   "home.parent": ["Parent", "والدین"],
   "home.articles": ["Latest articles", "تازہ مضامین"],
   "home.contact": ["Enquire", "استفسار"],
-  "home.contactTitle": ["Speak with the admissions office", "داخلہ دفتر سے بات کریں"],
+  "home.contactTitle": ["Speak with the office", "دفتر سے بات کریں"],
   "home.contactText": [
     "Send a short enquiry and our team will reply within one working day. Your data is used only to respond to you.",
     "مختصر استفسار بھیجیں، ہماری ٹیم ایک کاروباری دن میں جواب دے گی۔ آپ کا ڈیٹا صرف جواب دینے کے لیے استعمال ہوتا ہے۔",

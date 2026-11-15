@@ -404,7 +404,7 @@ export function HomeView({
       <section className="section">
         <div className="container-x grid gap-6 lg:grid-cols-2">
           <div>
-            <SectionHeading eyebrow={t("home.contact")} titleEn="Speak with the admissions office" titleUr="داخلہ دفتر سے بات کریں" subtitleEn={t("home.contactText")} subtitleUr={t("home.contactText")} />
+            <SectionHeading eyebrow={t("home.contact")} titleEn="Speak with the office" titleUr="دفتر سے بات کریں" subtitleEn={t("home.contactText")} subtitleUr={t("home.contactText")} />
             <div className="overflow-hidden rounded-lg border border-deep/15 shadow-sm">
               <iframe title={t("home.mapTitle")} src={UNIVERSITY.mapEmbed} className="h-56 w-full" loading="lazy" />
             </div>

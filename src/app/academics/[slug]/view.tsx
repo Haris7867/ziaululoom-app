@@ -33,7 +33,6 @@ export function ProgrammeDetail({ programme, related }: { programme: ProgrammeRo
         subtitleEn={programme.summaryEn}
         subtitleUr={programme.summaryUr}
       >
-        <Link href={`/admissions?programme=${programme.slug}`} className="btn btn-green">{t("nav.apply")} <Icon name="arrow" size={16} /></Link>
         <a href={`/api/pdf/prospectus/syllabus-${programme.slug}`} className="btn btn-ghost-light"><Icon name="download" size={16} /> {t("academics.syllabus")}</a>
       </PageHero>
 
@@ -89,10 +88,6 @@ export function ProgrammeDetail({ programme, related }: { programme: ProgrammeRo
                 <div className="flex justify-between gap-2"><dt className="text-ink/65">{t("academics.mode")}</dt><dd className="font-semibold">{programme.mode}</dd></div>
                 <div className="flex justify-between gap-2"><dt className="text-ink/65">{t("academics.department")}</dt><dd className="font-semibold">{programme.department}</dd></div>
               </dl>
-              <p className="mt-2 rounded bg-light p-2 text-xs text-deep">
-                {pick("For the monthly fee and admission details, please see the Admissions page.", "ماہانہ فیس اور داخلے کی تفصیل کے لیے داخلہ صفحہ دیکھیں۔")}
-              </p>
-              <Link href={`/admissions?programme=${programme.slug}`} className="btn btn-primary mt-3 w-full">{t("nav.apply")}</Link>
               <a href={`/api/pdf/prospectus/syllabus-${programme.slug}`} className="btn btn-outline mt-2 w-full"><Icon name="download" size={15} /> {t("academics.syllabus")}</a>
             </div>
             <div className="card p-5">

@@ -54,7 +54,7 @@ export function HeroSlider() {
       }}
       tabIndex={0}
     >
-      <div className="relative h-[400px] sm:h-[420px] lg:h-[440px]">
+      <div className="relative h-[340px] sm:h-[360px] lg:h-[380px]">
         {HERO_SLIDES.map((slide, i) => (
           <div
             key={slide.image}
@@ -65,7 +65,7 @@ export function HeroSlider() {
             aria-label={`${i + 1} / ${HERO_SLIDES.length}`}
           >
             <img src={slide.image} alt="" className="absolute inset-0 h-full w-full object-cover" loading={i === 0 ? "eager" : "lazy"} fetchPriority={i === 0 ? "high" : "auto"} />
-            <div className="absolute inset-0 bg-gradient-to-r from-deep/95 via-deep/75 to-deep/25" />
+            <div className="absolute inset-0 bg-gradient-to-r from-deep/85 via-deep/55 to-deep/5" />
             <div className="container-x relative flex h-full flex-col justify-center pb-14 pt-8 text-white">
               <p className="eyebrow !text-gold">{pick(slide.eyebrowEn, slide.eyebrowUr)}</p>
               <h1 className="mt-2 max-w-2xl text-3xl font-bold leading-[1.1] !text-white sm:text-4xl lg:text-5xl">
