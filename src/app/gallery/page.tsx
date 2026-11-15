@@ -47,8 +47,15 @@ export default function GalleryPage() {
               <h2 className="mt-1 text-3xl md:text-4xl"><Bi en={section.titleEn} ur={section.titleUr} /></h2>
               <p className="mt-1 max-w-2xl text-ink/75"><Bi en={section.descEn} ur={section.descUr} /></p>
             </div>
+            {section.cover && (
+              <div className="relative mb-5 overflow-hidden rounded-2xl shadow-lg">
+                <img src={`/images/gallery/${section.cover}.jpg`} alt={section.titleEn} loading="lazy" className="h-64 w-full object-cover object-[50%_30%] sm:h-80 md:h-[26rem]" />
+                <span className="absolute inset-0 bg-gradient-to-t from-deep/70 via-transparent to-transparent" aria-hidden="true" />
+                <span className="absolute bottom-3 start-4 rounded-md bg-white/90 px-3 py-1 text-sm font-bold text-deep"><Bi en={section.titleEn} ur={section.titleUr} /></span>
+              </div>
+            )}
             <GalleryGrid
-              photos={section.photos.map((photo) => ({
+              photos={section.photos.filter((photo) => photo.file !== section.cover).map((photo) => ({
                 id: nextId++,
                 url: `/images/gallery/${photo.file}.jpg`,
                 captionEn: photo.captionEn,
