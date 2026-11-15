@@ -173,8 +173,8 @@ export const dictionary: Record<string, [string, string]> = {
   // Academics
   "academics.title": ["Academics & Programmes", "تعلیمات و پروگرام"],
   "academics.subtitle": [
-    "Eight programmes across Islamic sciences and contemporary disciplines, taught on campus in Lahore.",
-    "اسلامی علوم اور عصری مضامین کے آٹھ پروگرام، لاہور کیمپس میں۔",
+    "Eight programmes across Islamic sciences and contemporary disciplines, taught on campus in Rawalpindi.",
+    "اسلامی علوم اور عصری مضامین کے آٹھ پروگرام، راولپنڈی کیمپس میں۔",
   ],
   "academics.overview": ["Overview", "تعارف"],
   "academics.eligibility": ["Eligibility", "اہلیت"],
@@ -321,7 +321,7 @@ export const dictionary: Record<string, [string, string]> = {
   // Qurbani
   "qurbani.title": ["Qurbani 2027", "قربانی 2027"],
   "qurbani.subtitle": [
-    "Scholar-supervised Qurbani with shared hissas, vet-checked animals and an instant receipt. Every hissa is tracked from booking to distribution.",
+    "Scholar-supervised Qurbani with shared hissas and vet-checked animals, offered through Jamia Ghousia Zia-Ul-Uloom. Collection from our three branches.",
     "علماء کی نگرانی میں قربانی، مشترکہ حصص، جانوروں کی ویٹرنری جانچ اور فوری رسید۔ ہر حصہ بکنگ سے تقسیم تک ٹریک ہوتا ہے۔",
   ],
   "qurbani.bookHissa": ["Book a Hissa", "حصہ بک کریں"],

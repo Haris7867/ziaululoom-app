@@ -6,7 +6,7 @@ import { Icon } from "./Icon";
 import { useI18n } from "@/i18n/provider";
 import { ShareButton } from "./ui";
 import { formatShortDate, formatDate, humanFileSize, whatsappLink } from "@/lib/format";
-import { DEFAULT_PDF_IMAGE, DEFAULT_PROGRAMME_IMAGE, FATWA_IMAGES, PDF_IMAGES, PROGRAMME_IMAGES } from "@/lib/site";
+import { STATIC_GALLERY, DEFAULT_PDF_IMAGE, DEFAULT_PROGRAMME_IMAGE, FATWA_IMAGES, PDF_IMAGES, PROGRAMME_IMAGES } from "@/lib/site";
 
 export function DateBadge({ date }: { date: Date | string }) {
   const { day, month, year } = formatShortDate(date);
@@ -408,5 +408,42 @@ export function WhatsAppHelp({ message }: { message: string }) {
     <a href={whatsappLink("+92515509922", message)} target="_blank" rel="noopener noreferrer" className="btn btn-outline !py-1.5 !text-xs">
       <Icon name="whatsapp" size={14} /> {t("nav.whatsapp")}
     </a>
+  );
+}
+
+export function StaticGallery({ count = 6 }: { count?: number }) {
+  const { pick } = useI18n();
+  return (
+    <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
+      {STATIC_GALLERY.slice(0, count).map((photo) => (
+        <Link key={photo.url} href="/gallery" className="group relative block overflow-hidden rounded-xl shadow-sm">
+          <img src={photo.url} alt={photo.en} loading="lazy" className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105" />
+          <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-deep/85 to-transparent px-3 pb-2 pt-8 text-sm font-semibold text-white">{pick(photo.en, photo.ur)}</span>
+        </Link>
+      ))}
+    </div>
+  );
+}
+
+export function DomeGlobe() {
+  const { pick } = useI18n();
+  return (
+    <section className="section relative overflow-hidden bg-gradient-to-br from-deep to-[#0b4f2f] text-white">
+      <div className="container-x grid items-center gap-8 md:grid-cols-2">
+        <div>
+          <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-gold">{pick("Light of knowledge", "نورِ علم")}</p>
+          <h2 className="mt-2 text-3xl font-bold !text-white md:text-4xl">{pick("Rooted in the light of Madinah", "مدینہ منورہ کے نور سے وابستہ")}</h2>
+          <p className="mt-3 max-w-lg !text-white/85">{pick("Our teaching is built on love for the Prophet ﷺ, the Quran and the Sunnah — carried from Rawalpindi to every corner of the world.", "ہماری تعلیم محبتِ رسول ﷺ، قرآن اور سنت پر قائم ہے — راولپنڈی سے دنیا کے ہر گوشے تک۔")}</p>
+        </div>
+        <div className="relative mx-auto h-64 w-64 sm:h-80 sm:w-80">
+          <span className="globe-ring absolute inset-0 rounded-full border-2 border-dashed border-gold/70" aria-hidden="true" />
+          <span className="globe-ring-rev absolute inset-4 rounded-full border border-white/40" aria-hidden="true" />
+          <div className="globe-float absolute inset-8 overflow-hidden rounded-full border-4 border-white/80 shadow-2xl">
+            <img src="/images/dome.jpg" alt={pick("The Green Dome", "گنبدِ خضریٰ")} className="globe-spin h-full w-full object-cover" loading="lazy" />
+            <span className="absolute inset-0 rounded-full bg-gradient-to-tr from-deep/30 via-transparent to-white/25" aria-hidden="true" />
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

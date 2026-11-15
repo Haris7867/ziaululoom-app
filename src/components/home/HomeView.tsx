@@ -8,12 +8,12 @@ import { useI18n } from "@/i18n/provider";
 import { AnimatedDivider } from "@/components/Decor";
 import { Countdown, SectionHeading, StatBlock, Tabs } from "@/components/ui";
 import {
-  AnnouncementTicker, ArticleCard, EventCard, FatwaCard, GalleryGrid, PdfCard,
+  ArticleCard, EventCard, FatwaCard, GalleryGrid, StaticGallery, DomeGlobe, PdfCard,
   ProgrammeCard, TestimonialCarousel,
 } from "@/components/cards";
 import { EnquiryForm } from "@/components/forms/EnquiryForm";
 import { DonationForm } from "@/components/forms/DonationForm";
-import { QUICK_TILES, SHOW_DONATIONS, STATS, UNIVERSITY, WHY_US, DONATION_PRESETS, DONATION_PURPOSES, IMAGES } from "@/lib/site";
+import { QUICK_TILES, SHOW_DONATIONS, SHOW_ANNOUNCEMENTS, STATS, UNIVERSITY, WHY_US, DONATION_PRESETS, DONATION_PURPOSES, IMAGES } from "@/lib/site";
 import { eventPhase, formatDate, formatPkr, whatsappLink } from "@/lib/format";
 
 type Announcement = { id: number; titleEn: string; titleUr: string; date: Date | string };
@@ -60,7 +60,7 @@ export function HomeView({
   seasonal: SeasonalRow[];
 }) {
   const { t, pick } = useI18n();
-  const [tab, setTab] = useState<"upcoming" | "ongoing" | "past">("upcoming");
+  const [tab, setTab] = useState<"upcoming" | "ongoing" | "past">("ongoing");
   const [donateAmount, setDonateAmount] = useState(DONATION_PRESETS[1]);
   const [donatePurpose, setDonatePurpose] = useState("general");
 
@@ -153,9 +153,6 @@ export function HomeView({
         </div>
       </section>
 
-      {/* 4. Announcements ticker */}
-      <AnnouncementTicker items={announcements} />
-
       {/* 5. Events */}
       <section className="section">
         <div className="container-x">
@@ -192,10 +189,14 @@ export function HomeView({
             ))}
           </div>
           {grouped[tab].length === 0 && (
-            <p className="mt-4 rounded-lg border border-dashed border-deep/20 p-6 text-center text-sm text-ink/60">{t("common.notFound")}</p>
+            <div className="mt-5">
+              <StaticGallery count={3} />
+            </div>
           )}
         </div>
       </section>
+
+      <DomeGlobe />
 
       <AnimatedDivider />
 
@@ -260,12 +261,12 @@ export function HomeView({
             titleUr="کیمپس کے حالیہ لمحات"
             action={<Link href="/gallery" className="btn btn-outline">{t("home.galleryLink")}</Link>}
           />
-          <GalleryGrid photos={photos.slice(0, 9)} />
+          {photos.length > 0 ? <GalleryGrid photos={photos.slice(0, 9)} /> : <StaticGallery count={9} />}
         </div>
       </section>
 
       {/* 9. Seasonal banner (neutral by default) */}
-      {seasonal.length > 0 && (
+      {SHOW_ANNOUNCEMENTS && seasonal.length > 0 && (
         <section className="section !py-8">
           <div className="container-x">
             {seasonal.slice(0, 1).map((banner) => (

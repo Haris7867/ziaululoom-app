@@ -1,6 +1,9 @@
 // Set to true to show donation pages, buttons and sections again.
 export const SHOW_DONATIONS = false;
 
+// Set to true to show the announcements bar and seasonal banner on the home page again.
+export const SHOW_ANNOUNCEMENTS = false;
+
 export const UNIVERSITY = {
   nameEn: "Jamia Ghousia Zia-Ul-Uloom",
   nameUr: "جامعہ غوثیہ ضیاء العلوم",
@@ -315,3 +318,16 @@ export const IMAGES = {
 };
 
 export const SEASONAL_KEYS = ["ramadan", "eid_fitr", "muharram", "rabi_awwal", "eid_adha", "academic"];
+
+// Existing site pictures used wherever the photo gallery is still empty.
+export const STATIC_GALLERY = [
+  { url: "/images/courtyard.jpg", en: "Campus courtyard", ur: "کیمپس صحن" },
+  { url: "/images/students-hall.jpg", en: "Class in session", ur: "سبق کا منظر" },
+  { url: "/images/dome.jpg", en: "The Green Dome", ur: "گنبدِ خضریٰ" },
+  { url: "/images/quran.jpg", en: "Quran study", ur: "قرآن کی تعلیم" },
+  { url: "/images/library.jpg", en: "Library", ur: "کتب خانہ" },
+  { url: "/images/graduation.jpg", en: "Graduation", ur: "تقریبِ تقسیمِ اسناد" },
+  { url: "/images/students-building.jpg", en: "Main building", ur: "مرکزی عمارت" },
+  { url: "/images/campus-angle.jpg", en: "Campus view", ur: "کیمپس کا منظر" },
+  { url: "/images/classroom.jpg", en: "Classroom", ur: "کلاس روم" },
+];
