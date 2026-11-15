@@ -34,7 +34,7 @@ export function AboutView({ faculty, reports }: { faculty: FacultyRow[]; reports
       (department === "all" || person.department === department) &&
       `${person.nameEn} ${person.nameUr} ${person.roleEn} ${person.department}`.toLowerCase().includes(query.toLowerCase()),
   );
-  const leadership = [{ id: 1, nameEn: "Sheikh ul Hadith Allama Peer Syed Zia Ul Haq Shah", nameUr: "شیخ الحدیث علامہ پیر سید ضیاء الحق شاہ", roleEn: "Founder & Principal", roleUr: "بانی و پرنسپل", bioEn: "Founder and Principal of Jamia Ghousia Zia-Ul-Uloom, Rawalpindi.", bioUr: "جامعہ غوثیہ ضیاء العلوم، راولپنڈی کے بانی و پرنسپل۔", qualifications: null }];
+  const leadership = [{ id: 1, nameEn: "Sheikh ul Hadith Allama Peer Syed Zia Ul Haq Shah Sahib", nameUr: "شیخ الحدیث علامہ پیر سید ضیاء الحق شاہ صاحب", roleEn: "Founder & Principal", roleUr: "بانی و پرنسپل", bioEn: "Founder and Principal of Jamia Ghousia Zia-Ul-Uloom, Rawalpindi.", bioUr: "جامعہ غوثیہ ضیاء العلوم، راولپنڈی کے بانی و پرنسپل۔", qualifications: null }];
   const board: typeof leadership = [];
   const reportsByYear = useMemo(() => {
     const map = new Map<number, ReportRow[]>();
@@ -122,12 +122,12 @@ export function AboutView({ faculty, reports }: { faculty: FacultyRow[]; reports
           <div className="grid gap-5 md:grid-cols-2">
             {leadership.map((person) => (
               <article key={`${person.id}-${person.roleEn}`} className="card overflow-hidden">
-                <Monogram name={person.nameEn} />
+                <img src={IMAGES.rector} alt={person.nameEn} loading="lazy" className="aspect-[4/3] w-full object-cover object-top" />
                 <div className="p-5">
                   <h3 className="text-2xl">{pick(person.nameEn, person.nameUr)}</h3>
                   <p className="text-sm font-semibold text-fresh">{pick(person.roleEn, person.roleUr)}</p>
                   <p className="mt-2 text-sm text-ink/80">{pick(person.bioEn, person.bioUr)}</p>
-                  <p className="mt-2 text-xs text-ink/55">{person.qualifications} · {t("about.photoPending")}</p>
+                  
                 </div>
               </article>
             ))}

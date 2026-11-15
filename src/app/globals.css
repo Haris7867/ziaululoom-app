@@ -53,6 +53,15 @@ h1, h2, h3, h4, h5, .font-display {
   letter-spacing: -0.01em;
 }
 
+/* Text on dark-green sections must always stay white (the global heading colour above would otherwise turn it green). */
+.hero-dark h1, .hero-dark h2, .hero-dark h3, .hero-dark h4,
+.hero-dark .font-display, .hero-dark .arabic,
+footer.bg-deep h1, footer.bg-deep h2, footer.bg-deep h3, footer.bg-deep h4,
+.site-header h1, .site-header h2, .site-header h3 {
+  color: #ffffff;
+}
+.hero-dark .eyebrow { color: var(--gold); }
+
 [dir="rtl"] body {
   font-family: "Noto Nastaliq Urdu", Inter, serif;
   line-height: 2.15;

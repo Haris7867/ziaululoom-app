@@ -23,7 +23,6 @@ const PROGRAMME_LINKS = [
   { href: "/academics/bs-islamic-studies", en: "BS Islamic Studies", ur: "بی ایس اسلامی علوم" },
   { href: "/academics/bs-quran-tafseer", en: "BS Quran & Tafseer", ur: "بی ایس قرآن و تفسیر" },
   { href: "/academics/bs-hadith-seerah", en: "BS Hadith & Seerah", ur: "بی ایس حدیث و سیرت" },
-  { href: "/academics/bs-fiqh-shariah", en: "BS Fiqh & Islamic Law", ur: "بی ایس فقہ و اسلامی قانون" },
   { href: "/academics/alimiyyah", en: "Alimiyyah (Dars-e-Nizami)", ur: "عالمیت (درسِ نظامی)" },
   { href: "/academics/hifz-tajweed", en: "Hifz & Tajweed", ur: "حفظ و تجوید" },
 ];

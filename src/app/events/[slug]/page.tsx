@@ -51,7 +51,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
           organizer: { "@type": "Organization", name: "Jamia Ghousia Zia-Ul-Uloom", url: "/" },
         }}
       />
-      <section className="relative isolate overflow-hidden bg-deep text-white">
+      <section className="hero-dark relative isolate overflow-hidden bg-deep text-white">
         <img src={event.coverImage ?? "/images/campus-hero.jpg"} alt="" className="absolute inset-0 h-full w-full object-cover opacity-40" />
         <div className="absolute inset-0 bg-gradient-to-r from-deep/95 to-deep/50" />
         <div className="container-x relative py-12">

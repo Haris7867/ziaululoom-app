@@ -1,3 +1,4 @@
+import { EVENTS_DATA } from "@/lib/events-data";
 import "server-only";
 import { and, asc, desc, eq, inArray, lt, or, sql } from "drizzle-orm";
 import { db } from "@/db";
@@ -23,9 +24,30 @@ export async function getAllAnnouncements() {
   return db.select().from(announcements).orderBy(desc(announcements.date));
 }
 
+// Programmes removed from the public site (hidden even if they still exist in the database).
+const HIDDEN_PROGRAMMES = ["bs-fiqh-shariah"];
+
+// Public-facing corrections applied on top of the database rows.
+function tidyProgramme<T extends { slug: string; durationYears: string; summaryEn: string; summaryUr: string; feePerYear: number; admissionFee: number }>(p: T): T {
+  const base = { ...p, feePerYear: 0, admissionFee: 0 };
+  if (p.slug === "alimiyyah") {
+    const years = Array.isArray((p as { curriculum?: unknown }).curriculum) ? ((p as { curriculum?: unknown }).curriculum as { labelEn: string; labelUr: string; courses: string[] }[]) : [];
+    const curriculum = years.length >= 8 ? years : [...years, { labelEn: `Year ${years.length + 1}`, labelUr: `سال ${years.length + 1}`, courses: ["Takhassus (specialisation)", "Teaching Residency", "Community Placement"] }];
+    return {
+      ...base,
+      curriculum,
+      durationYears: "8",
+      summaryEn: "The classical eight-year Dars-e-Nizami course in Arabic, Fiqh, Hadith and Tafseer.",
+      summaryUr: "کلاسیکی آٹھ سالہ درسِ نظامی — عربی، فقہ، حدیث اور تفسیر کے ساتھ۔",
+    };
+  }
+  return base;
+}
+
 export async function getProgrammes() {
   await ready();
-  return db.select().from(programmes).where(eq(programmes.published, true)).orderBy(asc(programmes.id));
+  const rows = await db.select().from(programmes).where(eq(programmes.published, true)).orderBy(asc(programmes.id));
+  return rows.filter((p) => !HIDDEN_PROGRAMMES.includes(p.slug)).map(tidyProgramme);
 }
 
 export async function getAllProgrammes() {
@@ -35,22 +57,35 @@ export async function getAllProgrammes() {
 
 export async function getProgramme(slug: string) {
   await ready();
+  if (HIDDEN_PROGRAMMES.includes(slug)) return null;
   const rows = await db.select().from(programmes).where(eq(programmes.slug, slug));
-  return rows[0] ?? null;
+  return rows[0] ? tidyProgramme(rows[0]) : null;
 }
 
 export async function getEvents() {
-  await ready();
-  return db.select().from(events).where(eq(events.published, true)).orderBy(asc(events.startAt));
+  return EVENTS_DATA.map(toEventRow);
 }
 
 export async function getEvent(slug: string) {
-  await ready();
-  const rows = await db.select().from(events).where(eq(events.slug, slug));
-  return rows[0] ?? null;
+  return EVENTS_DATA.map(toEventRow).find((event) => event.slug === slug) ?? null;
+}
+
+function toEventRow(e: (typeof EVENTS_DATA)[number], i: number) {
+  return {
+    id: i + 1, slug: e.slug, titleEn: e.titleEn, titleUr: e.titleUr,
+    descriptionEn: e.descriptionEn, descriptionUr: e.descriptionUr,
+    type: e.type, venueEn: e.venueEn, venueUr: e.venueUr,
+    startAt: new Date(e.start), endAt: new Date(e.end),
+    coverImage: e.coverImage, liveStreamUrl: null, schedule: null, speakers: null, videoUrl: null, published: true,
+  };
 }
 
 export async function getGallery(eventId?: number) {
+  // Gallery photos are added from GitHub, not the sample database.
+  return [] as Awaited<ReturnType<typeof getGalleryFromDb>>;
+}
+
+async function getGalleryFromDb(eventId?: number) {
   await ready();
   if (typeof eventId === "number") {
     return db.select().from(galleryPhotos).where(eq(galleryPhotos.eventId, eventId)).orderBy(desc(galleryPhotos.createdAt));

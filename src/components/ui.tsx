@@ -61,7 +61,7 @@ export function PageHero({
 }) {
   const { pick } = useI18n();
   return (
-    <section className="relative isolate overflow-hidden bg-deep text-white">
+    <section className="hero-dark relative isolate overflow-hidden bg-deep text-white">
       <img src={image} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover opacity-45" fetchPriority="high" />
       <div className="absolute inset-0 bg-gradient-to-r from-deep/95 via-deep/80 to-deep/45" aria-hidden="true" />
       <div className={`container-x relative ${compact ? "py-10" : "py-14 md:py-20"}`}>
@@ -70,9 +70,9 @@ export function PageHero({
             {pick(eyebrowEn, eyebrowUr)}
           </p>
         )}
-        <h1 className="max-w-3xl text-3xl font-bold text-white sm:text-4xl md:text-5xl">{pick(titleEn, titleUr)}</h1>
+        <h1 className="max-w-3xl text-3xl font-bold !text-white sm:text-4xl md:text-5xl">{pick(titleEn, titleUr)}</h1>
         {(subtitleEn || subtitleUr) && (
-          <p className="mt-3 max-w-2xl text-white/85">{pick(subtitleEn, subtitleUr)}</p>
+          <p className="mt-3 max-w-2xl !text-white/90">{pick(subtitleEn, subtitleUr)}</p>
         )}
         {children && <div className="mt-5 flex flex-wrap items-center gap-2.5">{children}</div>}
       </div>

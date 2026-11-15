@@ -51,7 +51,7 @@ export default async function QurbaniPage() {
 
   return (
     <>
-      <section className="relative isolate overflow-hidden bg-deep text-white">
+      <section className="hero-dark relative isolate overflow-hidden bg-deep text-white">
         <img src={IMAGES.cow2} alt="" className="absolute inset-0 h-full w-full object-cover opacity-35" fetchPriority="high" />
         <div className="absolute inset-0 bg-gradient-to-r from-deep/95 via-deep/85 to-deep/50" />
         <div className="container-x relative py-12 md:py-16">

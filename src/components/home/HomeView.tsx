@@ -83,17 +83,27 @@ export function HomeView({
     <>
       <HeroSlider />
 
-      {/* 2. Quick action tiles */}
-      <section className="section !pb-6">
+      {/* 2. Quick action tiles (photo cards) */}
+      <section className="section !pb-6 !pt-8 lg:!pt-10">
         <div className="container-x">
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {QUICK_TILES.map((tile) => (
-              <Link key={tile.href + tile.titleKey} href={tile.href} className="card group flex flex-col items-start p-3.5 !border-t-2 hover:!border-t-fresh">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-light text-deep transition group-hover:bg-deep group-hover:text-white">
-                  <Icon name={tile.icon as IconName} size={18} />
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+            {QUICK_TILES.map((tile, i) => (
+              <Link
+                key={tile.href + tile.titleKey}
+                href={tile.href}
+                className={`card group flex flex-col overflow-hidden !border-t-2 hover:!border-t-fresh ${i === QUICK_TILES.length - 1 ? "col-span-2 sm:col-span-1" : ""}`}
+              >
+                <span className="relative block aspect-[4/3] overflow-hidden">
+                  <img src={tile.image} alt="" loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
+                  <span className="absolute inset-0 bg-gradient-to-t from-deep/60 via-transparent to-transparent" aria-hidden="true" />
                 </span>
-                <span className="mt-2 text-sm font-bold leading-snug text-deep">{t(tile.titleKey)}</span>
-                <span className="text-[0.7rem] text-ink/60">{pick(tile.textEn, tile.textUr)}</span>
+                <span className="block p-3">
+                  <span className="block text-sm font-bold leading-snug text-deep">{t(tile.titleKey)}</span>
+                  <span className="mt-0.5 flex items-center justify-between text-[0.72rem] text-ink/60">
+                    {pick(tile.textEn, tile.textUr)}
+                    <Icon name="arrow" size={14} className="text-fresh transition group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" />
+                  </span>
+                </span>
               </Link>
             ))}
           </div>
@@ -103,17 +113,18 @@ export function HomeView({
       {/* 3. Rector's welcome */}
       <section className="section !pt-6">
         <div className="container-x grid items-center gap-7 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="relative">
-            <img src={IMAGES.classroom} alt={pick("A class in session at Jamia Ghousia Zia-Ul-Uloom", "جامعہ غوثیہ ضیاء العلوم میں سبق جاری")} loading="lazy" className="aspect-[4/3] w-full rounded-lg object-cover shadow-lg" />
-            <div className="absolute -bottom-5 end-3 max-w-[15rem] rounded-lg border border-deep/10 border-t-4 border-t-fresh bg-white p-3 shadow-lg">
-              <div className="flex items-center gap-2.5">
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-deep font-display text-lg font-bold text-white">IS</span>
-                <div>
-                  <p className="text-sm font-bold text-deep">{pick("Dr. Imran Siddiqui", "ڈاکٹر عمران صدیقی")}</p>
-                  <p className="text-[0.68rem] text-ink/60">{t("home.rectorRole")}</p>
-                </div>
-              </div>
-              <p className="mt-1.5 text-[0.62rem] text-ink/50">{t("about.photoPending")}</p>
+          <div className="relative mx-auto w-full max-w-md lg:max-w-none">
+            <div className="overflow-hidden rounded-2xl border-4 border-white shadow-xl ring-1 ring-deep/15">
+              <img
+                src={IMAGES.rector}
+                alt={pick("Sheikh ul Hadith Allama Peer Syed Zia Ul Haq Shah Sahib", "شیخ الحدیث علامہ پیر سید ضیاء الحق شاہ صاحب")}
+                loading="lazy"
+                className="aspect-[4/5] w-full object-cover object-top"
+              />
+            </div>
+            <div className="absolute -bottom-5 start-4 end-4 rounded-lg border border-deep/10 border-t-4 border-t-fresh bg-white p-3.5 shadow-lg sm:start-auto sm:max-w-[19rem]">
+              <p className="font-display text-base font-bold leading-snug text-deep">{pick("Sheikh ul Hadith Allama Peer Syed Zia Ul Haq Shah Sahib", "شیخ الحدیث علامہ پیر سید ضیاء الحق شاہ صاحب")}</p>
+              <p className="mt-0.5 text-xs text-ink/65">{t("home.rectorRole")}</p>
             </div>
           </div>
           <div>
@@ -195,8 +206,8 @@ export function HomeView({
             eyebrow={t("home.programmes")}
             titleEn="Study with scholarship and purpose"
             titleUr="علم اور مقصد کے ساتھ تعلیم"
-            subtitleEn="Eight programmes across Islamic sciences and contemporary disciplines."
-            subtitleUr="اسلامی علوم اور عصری مضامین کے آٹھ پروگرام۔"
+            subtitleEn="Programmes across the Islamic sciences, Quran, Arabic and contemporary disciplines."
+            subtitleUr="اسلامی علوم، قرآن، عربی اور عصری مضامین کے پروگرام۔"
             action={<Link href="/academics" className="btn btn-primary">{t("home.explore")} <Icon name="arrow" size={16} /></Link>}
           />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -218,12 +229,17 @@ export function HomeView({
           />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {WHY_US.map((item) => (
-              <div key={item.titleEn} className="card p-5">
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-light text-deep">
-                  <Icon name={item.icon as IconName} size={22} />
-                </span>
-                <h3 className="mt-3 text-lg font-bold leading-snug">{pick(item.titleEn, item.titleUr)}</h3>
-                <p className="mt-1.5 text-sm text-ink/75">{pick(item.textEn, item.textUr)}</p>
+              <div key={item.titleEn} className="card overflow-hidden">
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <img src={item.image} alt="" loading="lazy" className="h-full w-full object-cover transition duration-500 hover:scale-105" />
+                  <span className="absolute bottom-2 start-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-white text-deep shadow-md">
+                    <Icon name={item.icon as IconName} size={20} />
+                  </span>
+                </div>
+                <div className="p-4">
+                  <h3 className="text-lg font-bold leading-snug">{pick(item.titleEn, item.titleUr)}</h3>
+                  <p className="mt-1.5 text-sm text-ink/75">{pick(item.textEn, item.textUr)}</p>
+                </div>
               </div>
             ))}
           </div>

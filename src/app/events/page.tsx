@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: { title: "Events & Photo Galleries", images: ["/images/graduation.jpg"] },
 };
 
-const TYPES = ["Ijtema", "Lecture", "Graduation", "Workshop", "Ramadan", "Qurbani"];
+const TYPES = ["Alimiyyah", "Hifz", "Tajweed", "Husn-e-Qirat", "English", "Computer"];
 
 export default async function EventsPage({
   searchParams,

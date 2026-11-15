@@ -89,7 +89,7 @@ export const STATS = [
 
 export const HERO_SLIDES = [
   {
-    image: "/images/campus-hero.jpg",
+    image: "/images/courtyard.jpg",
     eyebrowEn: "Established 1989 · Rawalpindi, Pakistan",
     eyebrowUr: "قائم شدہ 1989 · راولپنڈی، پاکستان",
     titleEn: "Knowledge, character and service",
@@ -99,7 +99,7 @@ export const HERO_SLIDES = [
     verseUr: "«پڑھو اپنے رب کے نام سے جس نے پیدا کیا۔» — العلق 96:1",
   },
   {
-    image: "/images/classroom.jpg",
+    image: "/images/students-hall.jpg",
     eyebrowEn: "Classes & Halaqahs",
     eyebrowUr: "سبق اور حلقے",
     titleEn: "Small classes, close mentorship",
@@ -109,7 +109,7 @@ export const HERO_SLIDES = [
     verseUr: "«اے میرے رب! میرے علم میں اضافہ فرما۔» — طٰہٰ 20:114",
   },
   {
-    image: "/images/library.jpg",
+    image: "/images/books-b.jpg",
     eyebrowEn: "Digital Library",
     eyebrowUr: "ڈیجیٹل کتب خانہ",
     titleEn: "A library open to every seeker",
@@ -119,7 +119,7 @@ export const HERO_SLIDES = [
     verseUr: "«کیا جاننے والے اور نہ جاننے والے برابر ہیں؟» — الزمر 39:9",
   },
   {
-    image: "/images/graduation.jpg",
+    image: "/images/students-building.jpg",
     eyebrowEn: "Convocation",
     eyebrowUr: "کانووکیشن",
     titleEn: "Graduates serving across Pakistan",
@@ -129,7 +129,7 @@ export const HERO_SLIDES = [
     verseUr: "«لوگوں میں بہترین وہ ہے جو لوگوں کے لیے سب سے زیادہ نفع بخش ہو۔» — حدیث",
   },
   {
-    image: "/images/quran.jpg",
+    image: "/images/dome.jpg",
     eyebrowEn: "Quran Recitation",
     eyebrowUr: "تلاوتِ قرآن",
     titleEn: "Trained in recitation and tajweed",
@@ -141,18 +141,17 @@ export const HERO_SLIDES = [
 ];
 
 export const QUICK_TILES = [
-  { href: "/admissions", icon: "cap", titleKey: "nav.admissions", textEn: "Apply for 2027", textUr: "2027 کے لیے درخواست" },
-  { href: "/api/pdf/prospectus/prospectus-2027", icon: "pdf", titleKey: "admissions.prospectus", textEn: "Download PDF", textUr: "پی ڈی ایف ڈاؤن لوڈ" },
-  { href: "/darul-ifta/ask", icon: "question", titleKey: "home.askQuestion", textEn: "Private & tracked", textUr: "نجی اور ٹریک شدہ" },
-  { href: "/library?category=Khutbat", icon: "book", titleKey: "home.pdf", textEn: "Khutbat & Durus", textUr: "خطبات و دروس" },
-  { href: "/admissions#fees", icon: "scale", titleKey: "admissions.feeStructure", textEn: "All programmes", textUr: "تمام پروگرام" },
-  { href: "/students#portal", icon: "lock", titleKey: "students.portal", textEn: "Secure login", textUr: "محفوظ لاگ ان" },
-  { href: "/qurbani", icon: "cow", titleKey: "qurbani.title", textEn: "Book a hissa", textUr: "حصہ بک کریں" },
+  { href: "/api/pdf/prospectus/prospectus-2027", image: "/images/campus-angle.jpg", titleKey: "admissions.prospectus", textEn: "Download PDF", textUr: "پی ڈی ایف ڈاؤن لوڈ" },
+  { href: "/darul-ifta/ask", image: "/images/scholar-reading.jpg", titleKey: "home.askQuestion", textEn: "Private & tracked", textUr: "نجی اور ٹریک شدہ" },
+  { href: "/library?category=Khutbat", image: "/images/books-c.jpg", titleKey: "home.pdf", textEn: "Khutbat & Durus", textUr: "خطبات و دروس" },
+  { href: "/students#portal", image: "/images/students-hall.jpg", titleKey: "students.portal", textEn: "Secure login", textUr: "محفوظ لاگ ان" },
+  { href: "/qurbani", image: "/images/dome-city.jpg", titleKey: "qurbani.title", textEn: "Book a hissa", textUr: "حصہ بک کریں" },
 ];
 
 export const WHY_US = [
   {
     icon: "quran",
+    image: "/images/books-c.jpg",
     titleEn: "Traditional scholarship, verified chains",
     titleUr: "روایتی علم، مستند اسناد",
     textEn: "Alimiyyah and degree programmes taught by Muftis and PhD scholars with ijazah in Hadith and Fiqh.",
@@ -160,6 +159,7 @@ export const WHY_US = [
   },
   {
     icon: "users",
+    image: "/images/students-hall.jpg",
     titleEn: "Small halaqahs, personal attention",
     titleUr: "چھوٹے حلقے، ذاتی توجہ",
     textEn: "A 1:14 teacher-to-student ratio with weekly mentoring and academic counselling.",
@@ -167,6 +167,7 @@ export const WHY_US = [
   },
   {
     icon: "heart",
+    image: "/images/students-building.jpg",
     titleEn: "Welfare that removes barriers",
     titleUr: "فلاح و بہبود جو رکاوٹیں دور کرے",
     textEn: "Zakat-funded scholarships, free meals and hostel support for students who need it most.",
@@ -174,6 +175,7 @@ export const WHY_US = [
   },
   {
     icon: "globe",
+    image: "/images/campus-angle.jpg",
     titleEn: "Contemporary relevance",
     titleUr: "عصری مطابقت",
     textEn: "Semester system, research methods, Arabic language labs and optional computer literacy.",
@@ -191,6 +193,26 @@ export const PROGRAMME_ICONS: Record<string, string> = {
   "bs-arabic": "globe",
   "diploma-islamic-finance": "coins",
 };
+
+export const PROGRAMME_IMAGES: Record<string, string> = {
+  "bs-islamic-studies": "/images/books-b.jpg",
+  "bs-quran-tafseer": "/images/scholar-reading.jpg",
+  "bs-hadith-seerah": "/images/books-c.jpg",
+  alimiyyah: "/images/students-hall.jpg",
+  "hifz-tajweed": "/images/students-hall-aerial.jpg",
+  "bs-arabic": "/images/books-a.jpg",
+  "diploma-islamic-finance": "/images/campus-angle.jpg",
+};
+export const DEFAULT_PROGRAMME_IMAGE = "/images/campus-angle.jpg";
+
+export const PDF_IMAGES: Record<string, string> = {
+  Khutbat: "/images/dome.jpg",
+  "Durus-e-Quran": "/images/scholar-reading.jpg",
+  "Durus-e-Hadith": "/images/books-c.jpg",
+  "Fiqh Masail": "/images/books-b.jpg",
+};
+export const DEFAULT_PDF_IMAGE = "/images/books-a.jpg";
+export const FATWA_IMAGES = ["/images/books-b.jpg", "/images/books-a.jpg", "/images/books-c.jpg"];
 
 export const VALUES = [
   { titleEn: "Amanah (Trust)", titleUr: "امانت", textEn: "Every donation, record and answer is handled as a trust.", textUr: "ہر عطیہ، ریکارڈ اور جواب امانت سمجھ کر سنبھالا جاتا ہے۔" },
@@ -257,18 +279,20 @@ export const PAYMENT_METHODS = [
 ];
 
 export const IMAGES = {
-  campusHero: "/images/campus-hero.jpg",
-  campus: "https://images.pexels.com/photos/2982449/pexels-photo-2982449.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
-  campusAlt: "https://images.pexels.com/photos/234281/pexels-photo-234281.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
-  campusModern: "https://images.pexels.com/photos/11932106/pexels-photo-11932106.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
-  campusTower: "https://images.pexels.com/photos/396304/pexels-photo-396304.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
-  library: "/images/library.jpg",
-  books: "https://images.pexels.com/photos/8164399/pexels-photo-8164399.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
-  quran: "/images/quran.jpg",
-  oldBooks: "https://images.pexels.com/photos/10589099/pexels-photo-10589099.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
-  calligraphy: "https://images.pexels.com/photos/37697014/pexels-photo-37697014.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
-  graduation: "/images/graduation.jpg",
-  classroom: "/images/classroom.jpg",
+  campusHero: "/images/courtyard.jpg",
+  campus: "/images/campus-angle.jpg",
+  campusAlt: "/images/courtyard-cars.jpg",
+  campusModern: "/images/students-building.jpg",
+  campusTower: "/images/dome-city.jpg",
+  library: "/images/books-b.jpg",
+  books: "/images/books-a.jpg",
+  quran: "/images/scholar-reading.jpg",
+  oldBooks: "/images/books-c.jpg",
+  calligraphy: "/images/books-a.jpg",
+  graduation: "/images/students-hall-aerial.jpg",
+  classroom: "/images/students-hall.jpg",
+  rector: "/images/rector-portrait.jpg",
+  rectorWide: "/images/rector-podium.jpg",
   cow1: "https://images.pexels.com/photos/16846562/pexels-photo-16846562.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
   cow2: "https://images.pexels.com/photos/7164014/pexels-photo-7164014.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
   cow3: "https://images.pexels.com/photos/11684963/pexels-photo-11684963.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",

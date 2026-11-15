@@ -7,7 +7,6 @@ import { Accordion, Callout, Field, FormNotice, PageHero, SectionHeading } from 
 import { EnquiryForm } from "@/components/forms/EnquiryForm";
 import { useI18n } from "@/i18n/provider";
 import { IMAGES } from "@/lib/site";
-import { formatPkr } from "@/lib/format";
 
 type ProgrammeRow = { id: number; slug: string; titleEn: string; titleUr: string; level: string; durationYears: string; feePerYear: number; admissionFee: number };
 
@@ -100,33 +99,13 @@ export function AdmissionsView({ programmes, faqs }: { programmes: ProgrammeRow[
 
       <section id="fees" className="section bg-light/60">
         <div className="container-x">
-          <SectionHeading eyebrow="03" titleEn="Fee structure (sample)" titleUr="فیس اسٹرکچر (نمونہ)" subtitleEn="All figures are placeholders in PKR and confirmed with the finance office at admission." subtitleUr="تمام اعداد و شمار نمونہ ہیں (روپے میں) اور داخلے پر مالیات دفتر سے تصدیق ہوتے ہیں۔" />
-          <div className="overflow-x-auto rounded-lg border border-deep/15 bg-white">
-            <table className="w-full text-sm">
-              <caption className="sr-only">{t("admissions.feeStructure")}</caption>
-              <thead className="bg-deep text-xs uppercase tracking-wide text-white">
-                <tr>
-                  <th scope="col" className="p-3 text-start">{t("home.programmes")}</th>
-                  <th scope="col" className="p-3 text-start">{t("academics.level")}</th>
-                  <th scope="col" className="p-3 text-end">{pick("Tuition / year", "فیس / سال")}</th>
-                  <th scope="col" className="p-3 text-end">{pick("Admission fee", "داخلہ فیس")}</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-deep/10">
-                {programmes.map((programme) => (
-                  <tr key={programme.id}>
-                    <td className="p-3 font-medium text-ink"><Link href={`/academics/${programme.slug}`} className="hover:text-fresh">{pick(programme.titleEn, programme.titleUr)}</Link></td>
-                    <td className="p-3 text-xs text-ink/70">{programme.level} · {programme.durationYears} {t("academics.years")}</td>
-                    <td className="p-3 text-end" dir="ltr">{programme.feePerYear > 0 ? formatPkr(programme.feePerYear) : pick("Sponsored", "کفالت شدہ")}</td>
-                    <td className="p-3 text-end" dir="ltr">{formatPkr(programme.admissionFee)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <SectionHeading eyebrow="03" titleEn="Fees" titleUr="فیس" subtitleEn="One simple monthly fee for every student." subtitleUr="ہر طالب علم کے لیے ایک سادہ ماہانہ فیس۔" />
+          <div className="card mx-auto max-w-md p-6 text-center">
+            <span className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-full bg-light text-deep"><Icon name="money" size={24} /></span>
+            <p className="mt-3 text-sm font-semibold uppercase tracking-wide text-ink/60">{pick("Monthly fee", "ماہانہ فیس")}</p>
+            <p className="mt-1 font-display text-4xl font-bold text-deep" dir="ltr">PKR 500</p>
+            <p className="mt-1 text-sm text-ink/70">{pick("per month", "ماہانہ")}</p>
           </div>
-          <Callout title={t("donate.perStudent")}>
-            {t("donate.perStudentNote")} <Link href="/donate?purpose=scholarships" className="link-underline">{t("nav.donate")}</Link>
-          </Callout>
         </div>
       </section>
 
