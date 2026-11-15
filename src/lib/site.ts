@@ -321,13 +321,13 @@ export const SEASONAL_KEYS = ["ramadan", "eid_fitr", "muharram", "rabi_awwal", "
 
 // Existing site pictures used wherever the photo gallery is still empty.
 export const STATIC_GALLERY = [
+  { url: "/images/gallery/bukhari-01.jpg", en: "Khatm-e-Bukhari Sharif", ur: "ختمِ بخاری شریف" },
+  { url: "/images/gallery/prizes-01.jpg", en: "Prize distribution ceremony", ur: "تقریبِ تقسیمِ انعامات" },
+  { url: "/images/gallery/milad-01.jpg", en: "Milad conference", ur: "میلاد کانفرنس" },
+  { url: "/images/gallery/rector-04.jpg", en: "Our Rector", ur: "ہمارے مہتمم" },
+  { url: "/images/gallery/bukhari-02.jpg", en: "Khatm-e-Bukhari dua", ur: "ختمِ بخاری کی دعا" },
+  { url: "/images/gallery/teachers-01.jpg", en: "Teachers and guests", ur: "اساتذہ و مہمان" },
   { url: "/images/courtyard.jpg", en: "Campus courtyard", ur: "کیمپس صحن" },
-  { url: "/images/students-hall.jpg", en: "Class in session", ur: "سبق کا منظر" },
   { url: "/images/dome.jpg", en: "The Green Dome", ur: "گنبدِ خضریٰ" },
-  { url: "/images/quran.jpg", en: "Quran study", ur: "قرآن کی تعلیم" },
   { url: "/images/library.jpg", en: "Library", ur: "کتب خانہ" },
-  { url: "/images/graduation.jpg", en: "Graduation", ur: "تقریبِ تقسیمِ اسناد" },
-  { url: "/images/students-building.jpg", en: "Main building", ur: "مرکزی عمارت" },
-  { url: "/images/campus-angle.jpg", en: "Campus view", ur: "کیمپس کا منظر" },
-  { url: "/images/classroom.jpg", en: "Classroom", ur: "کلاس روم" },
 ];
