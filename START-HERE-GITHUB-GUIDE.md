@@ -1,6 +1,6 @@
 # START HERE — what changed + how to upload (GitHub) + how to deploy
 
-## 1. What changed in this version (v9)
+## 1. What changed in this version (v10)
 - Header: full green (same as footer), name in a white bold box, no search bar, no login button.
   Menu is now 6 items: Home, About, Academics (dropdown: Programmes, Admissions, Student Life, Student Portal),
   Resources (dropdown: Library, Darul Ifta, Ask a Question), Events (dropdown: Events, Gallery, Qurbani), Contact.
@@ -26,14 +26,14 @@ To change which photo a card uses, edit `src/lib/site.ts` (QUICK_TILES, WHY_US, 
 To add new photos later (gallery), put the files in `public/images/` — keep names lowercase, no spaces.
 
 ## 3. Uploading to GitHub (first time, step by step — no coding tools needed)
-1. Unzip `jamia-ghousia-v9-FULL.zip` on your computer. You get a folder with: `src`, `public`, and files like `package.json`.
+1. Unzip `jamia-ghousia-v10-FULL.zip` on your computer. You get a folder with: `src`, `public`, and files like `package.json`.
 2. Open your repository on github.com and sign in.
 3. Click **Add file → Upload files**.
 4. Drag in the contents of the unzipped folder: the **src** folder, the **public** folder, and ALL the files in the top level
    (package.json, package-lock.json, next.config.ts, tsconfig.json, etc.). Do NOT upload a folder called node_modules or .next.
    Tip: open the unzipped folder, press Ctrl+A to select everything, and drag it all into the GitHub page.
 5. Wait until every file shows as uploaded. (If GitHub says too many files, upload `src` first, commit, then `public`, commit, then the rest.)
-6. At the bottom, write a message like "v9 header, photos, programmes" and click **Commit changes** (keep "Commit directly to the main branch").
+6. At the bottom, write a message like "v10 header, photos, programmes" and click **Commit changes** (keep "Commit directly to the main branch").
 7. Same names = GitHub replaces the old files. Files you deleted in this version (for example none required) can stay — they are harmless.
 
 ## 4. Deploying (making the new version live)
