@@ -233,7 +233,9 @@ export const TIMELINE = [
   { year: "2024", titleEn: "Digital library & welfare network", titleUr: "ڈیجیٹل کتب خانہ و فلاحی نیٹ ورک", textEn: "Over 6,200 graduates serving in 38 districts; library archived online.", textUr: "38 اضلاع میں 6200 سے زیادہ فارغ التحصیل؛ کتب خانہ آن لائن محفوظ۔" },
 ];
 
-export const ACCREDITATIONS = [
+export const ACCREDITATIONS: { name: string; nameUr: string; logo?: string }[] = [
+  { name: "Punjab Charities Commission", nameUr: "پنجاب چیرٹیز کمیشن", logo: "/images/logos/punjab-charities.png" },
+  { name: "Islamabad Society Act", nameUr: "اسلام آباد سوسائٹیز ایکٹ" },
   { name: "Higher Education Commission", nameUr: "ہائیر ایجوکیشن کمیشن", logo: "/images/logo-hec.png" },
   { name: "Tanzeem ul Madaris", nameUr: "تنظیم المدارس", logo: "/images/logo-tanzeem.png" },
 ];

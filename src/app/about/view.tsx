@@ -132,32 +132,6 @@ export function AboutView({ reports }: { faculty?: FacultyRow[]; reports: Report
         </div>
       </section>
 
-      <section className="relative isolate overflow-hidden section">
-        <img src="/images/dome-city.jpg" alt="" aria-hidden="true" className="absolute inset-0 -z-10 h-full w-full object-cover" loading="lazy" />
-        <div className="absolute inset-0 -z-10 bg-deep/85" aria-hidden="true" />
-        <div className="container-x">
-          <div className="mb-6 text-white">
-            <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-gold">{t("about.faculty")}</p>
-            <h2 className="mt-1 text-3xl font-bold !text-white md:text-4xl">{pick("Our teachers", "ہمارے اساتذہ")}</h2>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {TEACHERS.map((teacher) => (
-              <article key={teacher.en} className="card flex items-center gap-4 p-4">
-                {teacher.photo ? (
-                  <img src={teacher.photo} alt={teacher.en} loading="lazy" className="h-16 w-16 shrink-0 rounded-full border-2 border-fresh object-cover object-top" />
-                ) : (
-                  <span className="inline-flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-deep font-display text-lg font-bold text-white">
-                    {teacher.en.split(" ").slice(1, 3).map((p) => p[0]).join("")}
-                  </span>
-                )}
-                <h3 className="text-base font-bold leading-snug text-deep">{pick(teacher.en, teacher.ur)}</h3>
-              </article>
-            ))}
-          </div>
-          <p className="mt-5 text-sm text-white/85">{pick("…and many other respected teachers.", "…اور بہت سے دیگر قابلِ احترام اساتذہ۔")}</p>
-        </div>
-      </section>
-
       <section className="section">
         <div className="container-x grid gap-6 lg:grid-cols-2">
           <div>
@@ -165,7 +139,11 @@ export function AboutView({ reports }: { faculty?: FacultyRow[]; reports: Report
             <div className="grid gap-2.5 sm:grid-cols-2">
               {ACCREDITATIONS.map((item) => (
                 <div key={item.name} className="flex items-center gap-2.5 rounded-lg border border-deep/15 bg-white p-3">
-                  <img src={item.logo} alt={item.name} loading="lazy" className="h-14 w-14 shrink-0 rounded object-contain" />
+                  {item.logo ? (
+                    <img src={item.logo} alt={item.name} loading="lazy" className="h-14 w-14 shrink-0 rounded object-contain" />
+                  ) : (
+                    <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded bg-deep font-display text-xs font-bold text-white">ISA</span>
+                  )}
                   <span className="text-sm font-semibold text-ink/80">{pick(item.name, item.nameUr)}</span>
                 </div>
               ))}
@@ -176,26 +154,6 @@ export function AboutView({ reports }: { faculty?: FacultyRow[]; reports: Report
                 "ڈگری کی منظوری اور الحاق کی دستاویزات رجسٹرار دفتر میں دیکھی جا سکتی ہیں۔",
               )}
             </Callout>
-          </div>
-          <div>
-            <SectionHeading eyebrow={t("about.reports")} titleEn="Audited & annual reports" titleUr="آڈٹ شدہ و سالانہ رپورٹس" subtitleEn={t("about.reportsSub")} subtitleUr={t("about.reportsSub")} />
-            <div className="space-y-3">
-              {reportsByYear.map(([year, rows]) => (
-                <div key={year} className="rounded-lg border border-deep/15 bg-white p-3">
-                  <p className="font-display text-lg font-bold text-deep">{year}</p>
-                  <ul className="mt-1 space-y-1.5">
-                    {rows.map((report) => (
-                      <li key={report.id} className="flex flex-wrap items-center justify-between gap-2 text-sm">
-                        <span className="text-ink/80">{pick(report.titleEn, report.titleUr)}</span>
-                        <a href={report.fileUrl} className="btn btn-outline !py-1 !text-xs">
-                          <Icon name="download" size={13} /> PDF
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>

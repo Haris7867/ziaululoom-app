@@ -82,8 +82,8 @@ export function SiteHeader() {
 
   const brand = (
     <Link href="/" aria-label={t("brand.name")} className="shrink-0">
-      <span className="inline-flex items-center rounded-xl bg-white px-4 py-2 shadow-md">
-        <span className="hidden sm:inline-flex"><Logo className="[&_span.font-display]:text-[1.6rem] [&_span.font-display]:font-extrabold [&_img]:h-16 [&_img]:w-auto" /></span>
+      <span className="inline-flex items-center rounded-xl bg-white px-5 py-2.5 shadow-md">
+        <span className="hidden sm:inline-flex"><Logo className="[&_span.font-display]:text-[2rem] [&_span.font-display]:font-extrabold [&_img]:h-20 [&_img]:w-auto" /></span>
         <span className="inline-flex sm:hidden">
           <Logo className="[&_span.font-display]:text-[0.95rem] [&_span.font-display]:font-extrabold [&_img]:h-9 [&_img]:w-auto" />
         </span>
@@ -127,7 +127,7 @@ export function SiteHeader() {
                     key={item.href}
                     href={item.href}
                     aria-current={active ? "page" : undefined}
-                    className={`rounded-md px-3 py-2 text-[0.9rem] font-semibold text-white transition ${active ? "bg-white/20" : "hover:bg-white/10"}`}
+                    className={`rounded-md px-3 py-2 text-[1rem] font-bold text-white transition ${active ? "bg-white/20" : "hover:bg-white/10"}`}
                   >
                     {t(item.key!)}
                   </Link>
