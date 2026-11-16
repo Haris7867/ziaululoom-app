@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getProgrammes } from "@/lib/data";
 import { buildContentPdf } from "@/lib/pdf";
 import { UNIVERSITY } from "@/lib/site";
+import { formatPkr } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
 
@@ -24,7 +25,7 @@ export async function GET(_request: Request, context: { params: Promise<{ slug: 
         ]
       : [
           { heading: "About the university", lines: ["Founded in 1989 on Canal Road, Lahore, Jamia Ghousia Zia-Ul-Uloom teaches the classical Islamic sciences alongside recognised degree programmes. All content on this page is sample placeholder content."] },
-          { heading: "Programmes and fees", lines: [...programmes.map((p) => `${p.titleEn} — ${p.level}, ${p.durationYears} years, ${p.mode}.`), "Monthly fee: PKR 500 per month."] },
+          { heading: "Programmes and indicative fees", lines: programmes.map((p) => `${p.titleEn} — ${p.level}, ${p.durationYears} years, ${p.mode}. Indicative fee: ${p.feePerYear > 0 ? formatPkr(p.feePerYear) + " per year" : "sponsored, no tuition fee"}.`) },
           { heading: "Admissions", lines: ["Applications are submitted online with a CNIC or B-Form and academic certificates. Shortlisted candidates attend an interview and, where required, an entry test. Zakat-funded scholarships cover up to 100% of fees for eligible students."] },
           { heading: "Campus life", lines: ["Residential hostel with mess, library and reading rooms, transport on four Lahore routes, sports ground, and a student welfare office offering counselling and financial support."] },
           { heading: "Contact", lines: [`Admissions office: ${UNIVERSITY.admissionsEmail}`, `Phone: ${UNIVERSITY.phone}`, `Address: ${UNIVERSITY.addressEn}`, "Office hours: Monday to Friday, 8:30 am to 4:30 pm."] },

@@ -32,7 +32,7 @@ export default async function ReceiptPage({ params }: { params: Promise<{ receip
         </div>
 
         <article className="overflow-hidden rounded-xl border border-deep/15 bg-white shadow-lg">
-          <header className="hero-dark bg-deep px-6 py-5 text-white">
+          <header className="bg-deep px-6 py-5 text-white">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
                 <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-gold">Jamia Ghousia Zia-Ul-Uloom</p>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { Icon } from "@/components/Icon";
 import { PageHero, SectionHeading, Tabs, EmptyState } from "@/components/ui";
 import { ProgrammeCard } from "@/components/cards";
@@ -40,6 +41,7 @@ export function AcademicsView({ programmes, calendar, exams }: { programmes: Pro
         subtitleEn={t("academics.subtitle")}
         subtitleUr={t("academics.subtitle")}
       >
+        <Link href="/admissions" className="btn btn-green">{t("nav.apply")}</Link>
         <a href="/api/pdf/prospectus/prospectus-2027" className="btn btn-ghost-light"><Icon name="download" size={16} /> {t("admissions.prospectus")}</a>
       </PageHero>
 
@@ -143,6 +145,7 @@ export function AcademicsView({ programmes, calendar, exams }: { programmes: Pro
               <div className="card p-5">
                 <h2 className="text-xl">{t("academics.results")}</h2>
                 <p className="mt-1 text-sm text-ink/70">{t("academics.resultsNote")}</p>
+                <Link href="/students#portal" className="btn btn-primary mt-3 w-full"><Icon name="lock" size={16} /> {t("students.portal")}</Link>
                 <p className="mt-2 text-xs text-ink/55">{t("academics.examNote")}</p>
               </div>
             </div>

@@ -6,15 +6,10 @@ import { Icon } from "@/components/Icon";
 import { Accordion, Callout, Countdown, SectionHeading } from "@/components/ui";
 import { GalleryGrid } from "@/components/cards";
 import { AnimatedDivider } from "@/components/Decor";
-import { BRANCHES, IMAGES, UNIVERSITY } from "@/lib/site";
+import { formatPkr, formatDate } from "@/lib/format";
+import { IMAGES } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
-
-// First day of Eid ul Adha 2027 (Pakistan, subject to moon sighting).
-const EID_TARGET = "2027-05-17T00:00:00+05:00";
-// Flip to true when the Qurbani season starts, to show live bookings and progress.
-const SEASON_LIVE = false;
-const BRANCH_PHOTOS = ["/images/students-building.jpg", "/images/courtyard.jpg", "/images/campus-angle.jpg"];
 
 export const metadata: Metadata = {
   title: "Qurbani 2027 — book a hissa",
@@ -44,26 +39,23 @@ export default async function QurbaniPage() {
       </section>
     );
   }
-  const [liveBoard, faqs, photos, liveStats] = await Promise.all([
+  const [board, faqs, photos, stats] = await Promise.all([
     getCowBoard(season.id),
     getQurbaniFaqs(),
     getGallery(),
     getQurbaniStats(season.id),
   ]);
-  const board = SEASON_LIVE ? liveBoard : liveBoard.map((cow) => ({ ...cow, shares: [] as typeof cow.shares }));
   const totalShares = board.length * 7 || 1;
   const bookedShares = board.reduce((sum, cow) => sum + cow.shares.filter((s) => s.status !== "Available").length, 0);
-  const stats = SEASON_LIVE ? liveStats : { ...liveStats, cowsSlaughtered: 0, sharesDistributed: 0 };
-  const meatKg = SEASON_LIVE ? season.meatToNeedyKg : 0;
   const paidShares = board.reduce((sum, cow) => sum + cow.shares.filter((s) => s.status === "Paid").length, 0);
 
   return (
     <>
-      <section className="hero-dark relative isolate overflow-hidden bg-deep text-white">
+      <section className="relative isolate overflow-hidden bg-deep text-white">
         <img src={IMAGES.cow2} alt="" className="absolute inset-0 h-full w-full object-cover opacity-35" fetchPriority="high" />
         <div className="absolute inset-0 bg-gradient-to-r from-deep/95 via-deep/85 to-deep/50" />
         <div className="container-x relative py-12 md:py-16">
-          <p className="eyebrow !text-gold">Qurbani 2027 · {UNIVERSITY.nameEn}</p>
+          <p className="eyebrow !text-gold">Qurbani 2027 · {formatPkr(season.sharePrice)} / hissa</p>
           <h1 className="mt-2 max-w-3xl text-4xl font-bold text-white sm:text-5xl"><T k="qurbani.title" /></h1>
           <p className="mt-3 max-w-2xl text-white/85"><T k="qurbani.subtitle" /></p>
           <div className="mt-5 flex flex-wrap gap-2.5">
@@ -73,11 +65,14 @@ export default async function QurbaniPage() {
           </div>
           <div className="mt-6 flex flex-wrap gap-3">
             <div className="rounded-lg bg-white/10 p-3">
-              <Countdown target={EID_TARGET} label="Time left until Eid ul Adha 2027" />
+              <Countdown target={new Date(season.bookingDeadline).toISOString()} label="qurbani.deadlineCountdown" />
+            </div>
+            <div className="rounded-lg bg-white/10 p-3">
+              <Countdown target={new Date(season.eidDate).toISOString()} label="qurbani.eidCountdown" />
             </div>
           </div>
-          <p className="mt-3 text-xs text-white/70">
-            Qurbani is offered on the days of Eid ul Adha. The exact date depends on the moon sighting.
+          <p className="mt-3 text-xs text-white/65">
+            Booking deadline {formatDate(season.bookingDeadline)} · Slaughter {formatDate(season.slaughterStart)}–{formatDate(season.slaughterEnd)} · {season.slaughterLocation}
           </p>
         </div>
       </section>
@@ -85,52 +80,39 @@ export default async function QurbaniPage() {
       <section className="section">
         <div className="container-x">
           <SectionHeading eyebrow="Options" titleEn="Choose your Qurbani" titleUr="اپنی قربانی منتخب کریں" subtitleEn="Every option is supervised by the Darul Ifta and includes a printable receipt." subtitleUr="ہر آپشن دارالافتاء کی نگرانی میں ہے اور قابلِ پرنٹ رسید شامل ہے۔" />
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { en: "Single hissa", ur: "ایک حصہ", price: season.sharePrice, descEn: "One share in a seven-share cow. Names of other buyers are never shown.", descUr: "سات حصوں والی گائے میں ایک حصہ۔ دیگر خریداروں کے نام نہیں دکھائے جاتے۔", icon: "cow", img: IMAGES.cow1 },
-              { en: "Whole cow (7 hissas)", ur: "پوری گائے (7 حصے)", price: season.cowPrice, descEn: "One receipt listing all seven hissas, or separate receipts on request.", descUr: "ایک رسید میں سات حصے، یا درخواست پر الگ رسیدیں۔", icon: "cow", img: IMAGES.cow3 },
-              { en: "Sadaqah Qurbani", ur: "صدقہ قربانی", price: season.sharePrice, descEn: "The full share goes to families screened by our welfare office.", descUr: "پورا حصہ ہمارے فلاح دفتر سے جانچے گئے خاندانوں کو جاتا ہے۔", icon: "heart", img: IMAGES.cow5 },
+              { en: "Single hissa", ur: "ایک حصہ", price: season.sharePrice, descEn: "One share in a seven-share cow. Names of other buyers are never shown.", descUr: "سات حصوں والی گائے میں ایک حصہ۔ دیگر خریداروں کے نام نہیں دکھائے جاتے۔", icon: "cow" },
+              { en: "Whole cow (7 hissas)", ur: "پوری گائے (7 حصے)", price: season.cowPrice, descEn: "One receipt listing all seven hissas, or separate receipts on request.", descUr: "ایک رسید میں سات حصے، یا درخواست پر الگ رسیدیں۔", icon: "cow" },
+              { en: "Aqeeqah", ur: "عقیقہ", price: season.aqeeqahPrice, descEn: "Shared with the naming ceremony intention; meat distributed per your instruction.", descUr: "نام رکھنے کی نیت کے ساتھ؛ گوشت آپ کی ہدایت کے مطابق تقسیم۔", icon: "star" },
+              { en: "Sadaqah Qurbani", ur: "صدقہ قربانی", price: season.sharePrice, descEn: "The full share goes to families screened by our welfare office.", descUr: "پورا حصہ ہمارے فلاح دفتر سے جانچے گئے خاندانوں کو جاتا ہے۔", icon: "heart" },
             ].map((option) => (
-              <div key={option.en} className="hero-dark relative isolate flex h-full min-h-[15rem] flex-col overflow-hidden rounded-xl p-5 text-white shadow-md">
-                <img src={option.img} alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 -z-10 h-full w-full object-cover" />
-                <span className="absolute inset-0 -z-10 bg-gradient-to-t from-deep/95 via-deep/70 to-deep/40" aria-hidden="true" />
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-white/90 text-deep"><Icon name={option.icon as "cow"} size={20} /></span>
-                <h3 className="mt-2 text-lg !text-white"><Bi en={option.en} ur={option.ur} /></h3>
-                <p className="mt-1 flex-1 text-sm !text-white/90"><Bi en={option.descEn} ur={option.descUr} /></p>
-                <Link href={`/qurbani/book?type=${encodeURIComponent(option.en)}`} className="btn btn-gold mt-3 !py-1.5 !text-xs"><T k="qurbani.bookHissa" /></Link>
+              <div key={option.en} className="card flex h-full flex-col p-5">
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-light text-deep"><Icon name={option.icon as "cow"} size={20} /></span>
+                <h3 className="mt-2 text-lg"><Bi en={option.en} ur={option.ur} /></h3>
+                <p className="mt-1 flex-1 text-sm text-ink/75"><Bi en={option.descEn} ur={option.descUr} /></p>
+                <p className="mt-2 font-display text-xl font-bold text-deep" dir="ltr">{formatPkr(option.price)}</p>
+                <Link href={`/qurbani/book?type=${encodeURIComponent(option.en)}`} className="btn btn-outline mt-2 !py-1.5 !text-xs"><T k="qurbani.bookHissa" /></Link>
               </div>
             ))}
           </div>
 
           <div className="mt-6 grid gap-3 sm:grid-cols-3">
             {[
-              { en: "Cattle (cow / buffalo)", ur: "گائے / بھینس", ages: "Min. 2 years" },
-              { en: "Goat", ur: "بکری", ages: "Min. 1 year" },
-              { en: "Sheep", ur: "بھیڑ", ages: "Min. 1 year" },
+              { en: "Cattle (cow / buffalo)", ur: "گائے / بھینس", ages: "Min. 2 years", weight: "430–530 kg", price: season.cowPrice },
+              { en: "Goat", ur: "بکری", ages: "Min. 1 year", weight: "35–50 kg", price: Math.round(season.sharePrice * 0.75) },
+              { en: "Sheep", ur: "بھیڑ", ages: "Min. 1 year", weight: "40–55 kg", price: Math.round(season.sharePrice * 0.8) },
             ].map((animal) => (
               <div key={animal.en} className="rounded-lg border border-deep/15 bg-white p-4">
                 <h3 className="text-base font-bold text-deep"><Bi en={animal.en} ur={animal.ur} /></h3>
                 <dl className="mt-1.5 text-xs text-ink/70">
                   <div className="flex justify-between"><dt><T k="qurbani.minAge" /></dt><dd className="font-semibold">{animal.ages}</dd></div>
+                  <div className="flex justify-between"><dt><T k="qurbani.weight" /></dt><dd className="font-semibold">{animal.weight}</dd></div>
+                  <div className="flex justify-between"><dt><T k="qurbani.price" /></dt><dd className="font-semibold" dir="ltr">{formatPkr(animal.price)}</dd></div>
                 </dl>
+                <p className="mt-1 text-[0.68rem] text-ink/50">Vet status: Fit for Qurbani (sample)</p>
               </div>
             ))}
-          </div>
-
-          <div className="mt-10">
-            <SectionHeading eyebrow="Collection" titleEn="Pickup points" titleUr="وصولی کے مقامات" subtitleEn="Collect your Qurbani meat from any of our three branches." subtitleUr="اپنی قربانی کا گوشت ہمارے تینوں شاخوں میں سے کسی سے وصول کریں۔" />
-            <div className="grid gap-4 md:grid-cols-3">
-              {BRANCHES.map((branch, index) => (
-                <article key={branch.nameEn} className="card overflow-hidden">
-                  <img src={BRANCH_PHOTOS[index]} alt={branch.nameEn} loading="lazy" className="h-44 w-full object-cover" />
-                  <div className="p-4">
-                    <p className="text-[0.7rem] font-bold uppercase tracking-[0.16em] text-fresh">Pickup point {index + 1}</p>
-                    <h3 className="mt-1 text-base font-bold leading-snug text-deep"><Bi en={branch.nameEn} ur={branch.nameUr} /></h3>
-                    <p className="mt-1 text-xs text-ink/70"><Bi en={branch.addressEn} ur={branch.addressUr} /></p>
-                  </div>
-                </article>
-              ))}
-            </div>
           </div>
         </div>
       </section>
@@ -161,7 +143,7 @@ export default async function QurbaniPage() {
                   <div className="flex items-start justify-between gap-2">
                     <div>
                       <h3 className="text-lg font-bold text-deep">Cow {cow.cowNumber}</h3>
-                      <p className="text-xs text-ink/60">{cow.breed} · {Math.floor(cow.ageMonths / 12)} yr {cow.ageMonths % 12} mo</p>
+                      <p className="text-xs text-ink/60">{cow.breed} · {cow.weightKg} kg · {Math.floor(cow.ageMonths / 12)} yr {cow.ageMonths % 12} mo</p>
                     </div>
                     <span className={`badge !text-[0.62rem] ${cow.vetStatus === "Fit for Qurbani" ? "" : "badge-grey"}`}>{cow.vetStatus}</span>
                   </div>
@@ -218,12 +200,13 @@ export default async function QurbaniPage() {
               ))}
               <div className="rounded-lg border border-deep/15 bg-white p-4">
                 <p className="text-xs font-semibold uppercase tracking-wide text-ink/60"><T k="qurbani.meatToNeedy" /></p>
-                <p className="font-display text-2xl font-bold text-deep" dir="ltr">{meatKg.toLocaleString("en-PK")} kg</p>
+                <p className="font-display text-2xl font-bold text-deep" dir="ltr">{season.meatToNeedyKg.toLocaleString("en-PK")} kg</p>
                 <p className="text-xs text-ink/60">{paidShares} paid hissas this season · {bookedShares} booked</p>
               </div>
             </div>
-            <Callout icon="shield" title="Receipt">
+            <Callout icon="shield" title="Sample receipt">
               <p>Every payment generates a PDF receipt with a QR code to the private status page.</p>
+              <Link href={`/qurbani/receipt/QRB-2027-000123`} className="link-underline mt-1 inline-block">View sample Qurbani receipt →</Link>
             </Callout>
           </div>
           <div>

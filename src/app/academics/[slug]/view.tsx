@@ -33,6 +33,7 @@ export function ProgrammeDetail({ programme, related }: { programme: ProgrammeRo
         subtitleEn={programme.summaryEn}
         subtitleUr={programme.summaryUr}
       >
+        <Link href={`/admissions?programme=${programme.slug}`} className="btn btn-green">{t("nav.apply")} <Icon name="arrow" size={16} /></Link>
         <a href={`/api/pdf/prospectus/syllabus-${programme.slug}`} className="btn btn-ghost-light"><Icon name="download" size={16} /> {t("academics.syllabus")}</a>
       </PageHero>
 
@@ -81,13 +82,19 @@ export function ProgrammeDetail({ programme, related }: { programme: ProgrammeRo
 
           <aside className="space-y-4">
             <div className="card p-5">
-              <h2 className="text-lg">{pick("Programme details", "پروگرام کی تفصیل")}</h2>
+              <h2 className="text-lg">{t("academics.fees")}</h2>
               <dl className="mt-2 space-y-1.5 text-sm">
                 <div className="flex justify-between gap-2"><dt className="text-ink/65">{t("academics.level")}</dt><dd className="font-semibold">{programme.level}</dd></div>
                 <div className="flex justify-between gap-2"><dt className="text-ink/65">{t("academics.duration")}</dt><dd className="font-semibold">{programme.durationYears} {t("academics.years")}</dd></div>
                 <div className="flex justify-between gap-2"><dt className="text-ink/65">{t("academics.mode")}</dt><dd className="font-semibold">{programme.mode}</dd></div>
                 <div className="flex justify-between gap-2"><dt className="text-ink/65">{t("academics.department")}</dt><dd className="font-semibold">{programme.department}</dd></div>
+                <div className="flex justify-between gap-2 border-t border-deep/10 pt-1.5"><dt className="text-ink/65">{t("academics.fees")}</dt><dd className="font-semibold text-deep" dir="ltr">{programme.feePerYear > 0 ? formatPkr(programme.feePerYear) : pick("Sponsored", "کفالت شدہ")}</dd></div>
+                <div className="flex justify-between gap-2"><dt className="text-ink/65">{pick("Admission fee", "داخلہ فیس")}</dt><dd dir="ltr">{formatPkr(programme.admissionFee)}</dd></div>
               </dl>
+              <p className="mt-2 rounded bg-light p-2 text-xs text-deep">
+                {pick("Zakat-funded scholarships can cover up to 100% of fees. Sample fee figures — confirm with the finance office.", "زکوٰۃ سے چلنے والے وظائف 100% فیس تک پورا کر سکتے ہیں۔ یہ نمونہ فیس ہے — مالیات دفتر سے تصدیق کریں۔")}
+              </p>
+              <Link href={`/admissions?programme=${programme.slug}`} className="btn btn-primary mt-3 w-full">{t("nav.apply")}</Link>
               <a href={`/api/pdf/prospectus/syllabus-${programme.slug}`} className="btn btn-outline mt-2 w-full"><Icon name="download" size={15} /> {t("academics.syllabus")}</a>
             </div>
             <div className="card p-5">

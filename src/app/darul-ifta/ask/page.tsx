@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function AskPage() {
   return (
     <>
-      <section className="hero-dark relative isolate overflow-hidden bg-deep text-white">
+      <section className="relative isolate overflow-hidden bg-deep text-white">
         <img src={IMAGES.quran} alt="" className="absolute inset-0 h-full w-full object-cover opacity-35" />
         <div className="absolute inset-0 bg-gradient-to-r from-deep/95 to-deep/60" />
         <div className="container-x relative py-12">

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getEvents, getGallery } from "@/lib/data";
-import { EventCard, GalleryGrid, StaticGallery } from "@/components/cards";
+import { EventCard, GalleryGrid } from "@/components/cards";
 import { PageHero, SectionHeading, EmptyState } from "@/components/ui";
 import { Bi, T } from "@/components/Bi";
 import { Icon } from "@/components/Icon";
@@ -13,10 +13,12 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Events & Photo Galleries",
   description:
-    "Ijtema, lectures, graduations, workshops, Ramadan programmes and Qurbani distribution — with photo galleries. Browse the programmes running now and the photo galleries.",
+    "Ijtema, lectures, graduations, workshops, Ramadan programmes and Qurbani distribution — with photo galleries. Filter by year, type and venue, or watch the live stream.",
   alternates: { canonical: "/events" },
   openGraph: { title: "Events & Photo Galleries", images: ["/images/graduation.jpg"] },
 };
+
+const TYPES = ["Alimiyyah", "Hifz", "Tajweed", "Husn-e-Qirat", "English", "Computer"];
 
 export default async function EventsPage({
   searchParams,
@@ -40,6 +42,14 @@ export default async function EventsPage({
     past: filtered.filter((event) => eventPhase(event.startAt, event.endAt) === "past").reverse(),
   };
 
+  const link = (params: Record<string, string | undefined>) => {
+    const search = new URLSearchParams();
+    const merged = { ...filters, ...params };
+    for (const [key, value] of Object.entries(merged)) if (value) search.set(key, value);
+    const qs = search.toString();
+    return `/events${qs ? `?${qs}` : ""}`;
+  };
+
   return (
     <>
       <PageHero
@@ -57,11 +67,33 @@ export default async function EventsPage({
 
       <section className="section">
         <div className="container-x">
-          <StaticGallery count={3} />
+          <div className="card p-3">
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs">
+              <span className="font-bold uppercase tracking-wide text-deep"><T k="events.type" /></span>
+              <Link href={link({ type: undefined })} className={`rounded-full border px-2.5 py-1 font-semibold ${!filters.type ? "border-deep bg-deep text-white" : "border-deep/20 text-deep"}`}><T k="common.all" /></Link>
+              {TYPES.map((type) => (
+                <Link key={type} href={link({ type })} className={`rounded-full border px-2.5 py-1 font-semibold ${filters.type === type ? "border-deep bg-deep text-white" : "border-deep/20 text-deep"}`}>{type}</Link>
+              ))}
+            </div>
+            <div className="mt-2 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs">
+              <span className="font-bold uppercase tracking-wide text-deep"><T k="gallery.year" /></span>
+              <Link href={link({ year: undefined })} className={`rounded-full border px-2.5 py-1 font-semibold ${!filters.year ? "border-deep bg-deep text-white" : "border-deep/20 text-deep"}`}><T k="common.all" /></Link>
+              {years.map((year) => (
+                <Link key={year} href={link({ year: String(year) })} className={`rounded-full border px-2.5 py-1 font-semibold ${filters.year === String(year) ? "border-deep bg-deep text-white" : "border-deep/20 text-deep"}`}>{year}</Link>
+              ))}
+            </div>
+            <div className="mt-2 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs">
+              <span className="font-bold uppercase tracking-wide text-deep"><T k="events.venue" /></span>
+              <Link href={link({ venue: undefined })} className={`rounded-full border px-2.5 py-1 font-semibold ${!filters.venue ? "border-deep bg-deep text-white" : "border-deep/20 text-deep"}`}><T k="common.all" /></Link>
+              {venues.map((venue) => (
+                <Link key={venue} href={link({ venue })} className={`rounded-full border px-2.5 py-1 font-semibold ${filters.venue === venue ? "border-deep bg-deep text-white" : "border-deep/20 text-deep"}`}>{venue.split(",")[0]}</Link>
+              ))}
+            </div>
+          </div>
 
           {(["ongoing", "upcoming", "past"] as const).map((phase) =>
             grouped[phase].length > 0 ? (
-              <div key={phase} className="mt-10">
+              <div key={phase} className="mt-8">
                 <SectionHeading
                   eyebrow={phase === "ongoing" ? "Live now" : phase === "upcoming" ? "Upcoming" : "Archive"}
                   titleEn={phase === "ongoing" ? "Happening now" : phase === "upcoming" ? "Upcoming events" : "Past events"}
@@ -80,7 +112,7 @@ export default async function EventsPage({
       <section className="section bg-light/60">
         <div className="container-x">
           <SectionHeading eyebrow="Gallery" titleEn="Latest photographs" titleUr="تازہ ترین تصاویر" subtitleEn="Published with permission; faces are avoided unless approved." subtitleUr="اجازت کے ساتھ شائع؛ منظوری کے بغیر چہرے شامل نہیں۔" action={<Link href="/gallery" className="btn btn-outline"><T k="common.viewAll" /></Link>} />
-          {photos.length > 0 ? <GalleryGrid photos={photos.slice(0, 6)} /> : <StaticGallery count={6} />}
+          <GalleryGrid photos={photos.slice(0, 6)} />
         </div>
       </section>
     </>

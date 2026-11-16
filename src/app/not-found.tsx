@@ -9,6 +9,7 @@ type Result = { titleEn: string; titleUr: string; href: string; type: string };
 
 const LINKS = [
   { href: "/academics", key: "nav.academics" },
+  { href: "/admissions", key: "nav.admissions" },
   { href: "/library", key: "nav.library" },
   { href: "/darul-ifta", key: "nav.fatwa" },
   { href: "/qurbani", key: "nav.qurbani" },
