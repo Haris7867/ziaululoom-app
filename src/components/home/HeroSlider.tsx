@@ -40,7 +40,7 @@ export function HeroSlider() {
       ref={regionRef}
       aria-roledescription="carousel"
       aria-label={t("brand.name")}
-      className="relative isolate overflow-hidden bg-deep"
+      className="hero-dark relative isolate overflow-hidden bg-deep"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
@@ -54,7 +54,7 @@ export function HeroSlider() {
       }}
       tabIndex={0}
     >
-      <div className="relative h-[520px] sm:h-[560px] lg:h-[600px]">
+      <div className="relative h-[340px] sm:h-[360px] lg:h-[380px]">
         {HERO_SLIDES.map((slide, i) => (
           <div
             key={slide.image}
@@ -65,15 +65,15 @@ export function HeroSlider() {
             aria-label={`${i + 1} / ${HERO_SLIDES.length}`}
           >
             <img src={slide.image} alt="" className="absolute inset-0 h-full w-full object-cover" loading={i === 0 ? "eager" : "lazy"} fetchPriority={i === 0 ? "high" : "auto"} />
-            <div className="absolute inset-0 bg-gradient-to-r from-deep/95 via-deep/75 to-deep/25" />
-            <div className="container-x relative flex h-full flex-col justify-center pb-16 pt-10 text-white">
+            <div className="absolute inset-0 bg-gradient-to-r from-deep/85 via-deep/55 to-deep/5" />
+            <div className="container-x relative flex h-full flex-col justify-center pb-14 pt-8 text-white">
               <p className="eyebrow !text-gold">{pick(slide.eyebrowEn, slide.eyebrowUr)}</p>
-              <h1 className="mt-2 max-w-2xl text-4xl font-bold leading-[1.1] !text-white sm:text-5xl lg:text-6xl">
+              <h1 className="mt-2 max-w-2xl text-3xl font-bold leading-[1.1] !text-white sm:text-4xl lg:text-5xl">
                 {pick(slide.titleEn, slide.titleUr)}
               </h1>
-              <p className="arabic mt-4 font-display text-xl text-light/95" dir="rtl" lang="ar">{slide.verseAr}</p>
+              <p className="arabic mt-3 font-display text-lg !text-white sm:text-xl" dir="rtl" lang="ar">{slide.verseAr}</p>
               <p className="mt-1.5 max-w-xl text-sm text-white/85 sm:text-base">{pick(slide.verseEn, slide.verseUr)}</p>
-              <div className="mt-6 flex flex-wrap gap-2.5">
+              <div className="mt-4 flex flex-wrap gap-2.5">
                 <Link href="/academics" className="btn btn-green">{t("home.explore")} <Icon name="arrow" size={16} /></Link>
                 {SHOW_DONATIONS && <Link href="/donate" className="btn btn-gold">{t("nav.donate")} <Icon name="heart" size={16} /></Link>}
               </div>

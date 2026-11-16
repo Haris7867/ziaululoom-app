@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = (process.env.NEXT_PUBLIC_SITE_URL || "https://ziaululoom.com").replace(/\/$/, "");
   const staticPaths = [
-    "", "/about", "/academics", "/admissions", "/library", "/darul-ifta", "/darul-ifta/ask",
+    "", "/about", "/academics", "/library", "/darul-ifta", "/darul-ifta/ask",
     "/events", "/gallery", "/articles", "/qurbani", "/qurbani/book", "/qurbani/status", "/qurbani/faq",
     "/donate", "/students", "/contact", "/seasonal", "/policies/privacy", "/policies/terms", "/policies/refund",
     "/policies/accessibility", "/admin/login",

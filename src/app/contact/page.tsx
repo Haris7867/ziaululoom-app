@@ -7,7 +7,7 @@ import { IMAGES, UNIVERSITY } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact & Enquiries",
-  description: "Visit the campus on Canal Road, Lahore, call +92 51 5509922, request a callback, download the prospectus or subscribe to the newsletter.",
+  description: "Visit the campus in Rawalpindi, call +92 51 5509922, request a callback, download the prospectus or subscribe to the newsletter.",
   alternates: { canonical: "/contact" },
   openGraph: { title: "Contact & Enquiries", images: ["/images/campus-hero.jpg"] },
 };
@@ -28,7 +28,9 @@ export default function ContactPage() {
         <a href={UNIVERSITY.social.whatsapp} target="_blank" rel="noopener noreferrer" className="btn btn-green"><Icon name="whatsapp" size={16} /> <T k="contact.whatsappChat" /></a>
       </PageHero>
 
-      <section className="section">
+      <section className="section relative isolate overflow-hidden bg-gradient-to-b from-[#dff2e5] via-[#eaf7ee] to-[#cfe9d8]">
+        <div className="pointer-events-none absolute -start-24 -top-24 -z-10 h-80 w-80 rounded-full bg-fresh/25 blur-3xl" aria-hidden="true" />
+        <div className="pointer-events-none absolute -bottom-24 -end-24 -z-10 h-96 w-96 rounded-full bg-deep/20 blur-3xl" aria-hidden="true" />
         <div className="container-x grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="card p-5">
             <SectionHeading eyebrow="Enquiry" titleEn="Quick enquiry" titleUr="مختصر استفسار" subtitleEn="Five fields maximum — we only ask what we need." subtitleUr="زیادہ سے زیادہ پانچ فیلڈز — ہم صرف ضروری معلومات پوچھتے ہیں۔" />

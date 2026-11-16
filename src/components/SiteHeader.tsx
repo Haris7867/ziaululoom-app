@@ -8,17 +8,39 @@ import { useI18n } from "@/i18n/provider";
 import { SHOW_DONATIONS, UNIVERSITY } from "@/lib/site";
 import { whatsappLink } from "@/lib/format";
 
-const NAV = [
-  { href: "/", key: "nav.home" },
-  { href: "/about", key: "nav.about" },
-  { href: "/academics", key: "nav.academics" },
-  { href: "/admissions", key: "nav.admissions" },
-  { href: "/library", key: "nav.library" },
-  { href: "/darul-ifta", key: "nav.fatwa" },
-  { href: "/events", key: "nav.events" },
-  { href: "/qurbani", key: "nav.qurbani" },
-  { href: "/students", key: "nav.students" },
-  { href: "/contact", key: "nav.contact" },
+type NavLeaf = { href: string; key?: string; en?: string; ur?: string };
+type NavItem =
+  | ({ type: "link" } & NavLeaf)
+  | { type: "group"; en: string; ur: string; children: NavLeaf[] };
+
+// Header menu: 6 items. Academics and Students are merged into one dropdown.
+const NAV: NavItem[] = [
+  { type: "link", href: "/", key: "nav.home" },
+  { type: "link", href: "/about", key: "nav.about" },
+  {
+    type: "group", en: "Academics", ur: "تعلیمات",
+    children: [
+      { href: "/academics", en: "Programmes", ur: "پروگرام" },
+      { href: "/students", en: "Student Life", ur: "طلبہ کی زندگی" },
+    ],
+  },
+  {
+    type: "group", en: "Resources", ur: "وسائل",
+    children: [
+      { href: "/library", key: "nav.library" },
+      { href: "/darul-ifta", key: "nav.fatwa" },
+      { href: "/darul-ifta/ask", key: "home.askQuestion" },
+    ],
+  },
+  {
+    type: "group", en: "Events", ur: "تقریبات",
+    children: [
+      { href: "/events", key: "nav.events" },
+      { href: "/gallery", key: "gallery.title" },
+      { href: "/qurbani", key: "nav.qurbani" },
+    ],
+  },
+  { type: "link", href: "/contact", key: "nav.contact" },
 ];
 
 export function LanguageToggle({ compact = false }: { compact?: boolean }) {
@@ -37,7 +59,7 @@ export function LanguageToggle({ compact = false }: { compact?: boolean }) {
 }
 
 export function SiteHeader() {
-  const { t } = useI18n();
+  const { t, pick } = useI18n();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
@@ -52,7 +74,22 @@ export function SiteHeader() {
     };
   }, [open]);
 
-  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
+  const isActive = (href: string) => {
+    const path = href.split("#")[0];
+    return path === "/" ? pathname === "/" : pathname.startsWith(path);
+  };
+  const label = (leaf: NavLeaf) => (leaf.key ? t(leaf.key) : pick(leaf.en ?? "", leaf.ur ?? ""));
+
+  const brand = (
+    <Link href="/" aria-label={t("brand.name")} className="shrink-0">
+      <span className="inline-flex items-center rounded-xl bg-white px-4 py-2 shadow-md">
+        <span className="hidden sm:inline-flex"><Logo className="[&_span.font-display]:text-[1.6rem] [&_span.font-display]:font-extrabold [&_img]:h-16 [&_img]:w-auto" /></span>
+        <span className="inline-flex sm:hidden">
+          <Logo className="[&_span.font-display]:text-[0.95rem] [&_span.font-display]:font-extrabold [&_img]:h-9 [&_img]:w-auto" />
+        </span>
+      </span>
+    </Link>
+  );
 
   return (
     <>
@@ -76,51 +113,64 @@ export function SiteHeader() {
         </div>
       </div>
 
-      {/* Sticky header */}
-      <header className="sticky top-0 z-40 bg-deep text-white shadow-md">
+      {/* Sticky header — green, same colour as the footer */}
+      <header className="site-header sticky top-0 z-40 border-b border-white/10 bg-deep shadow-md">
         <div className="container-x flex items-center justify-between gap-3 py-2.5">
-          <Link href="/" aria-label={t("brand.name")} className="shrink-0">
-            <span className="hidden rounded-xl bg-white px-3 py-1.5 shadow sm:inline-flex"><Logo className="[&_span.font-display]:text-[1.35rem]" /></span>
-            <span className="inline-flex rounded-lg bg-white px-2 py-1 sm:hidden">
-              <Logo className="[&_span.font-display]:text-[0.95rem] [&_img]:h-9 [&_img]:w-auto" />
-            </span>
-          </Link>
+          {brand}
 
-          <nav aria-label="Main navigation" className="hidden min-w-0 items-center gap-0 xl:flex">
-            {NAV.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={isActive(item.href) ? "page" : undefined}
-                className={`rounded-md px-1.5 py-2 text-[0.8rem] font-semibold transition ${
-                  isActive(item.href) ? "bg-white/20 text-white" : "text-white hover:bg-white/10"
-                }`}
-              >
-                {t(item.key)}
-              </Link>
-            ))}
+          <nav aria-label="Main navigation" className="hidden min-w-0 items-center gap-1 xl:flex">
+            {NAV.map((item) => {
+              if (item.type === "link") {
+                const active = isActive(item.href);
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    aria-current={active ? "page" : undefined}
+                    className={`rounded-md px-3 py-2 text-[0.9rem] font-semibold text-white transition ${active ? "bg-white/20" : "hover:bg-white/10"}`}
+                  >
+                    {t(item.key!)}
+                  </Link>
+                );
+              }
+              const active = item.children.some((c) => isActive(c.href));
+              return (
+                <div key={item.en} className="group relative">
+                  <button
+                    type="button"
+                    aria-haspopup="true"
+                    className={`inline-flex items-center gap-1 rounded-md px-3 py-2 text-[0.9rem] font-semibold text-white transition ${active ? "bg-white/20" : "hover:bg-white/10"}`}
+                  >
+                    {pick(item.en, item.ur)}
+                    <Icon name="chevron" size={14} className="transition group-hover:rotate-180 group-focus-within:rotate-180" />
+                  </button>
+                  <div className="invisible absolute start-0 top-full z-50 min-w-[13.5rem] pt-2 opacity-0 transition group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                    <ul className="overflow-hidden rounded-lg border border-deep/10 border-t-4 border-t-fresh bg-white py-1.5 shadow-xl">
+                      {item.children.map((child) => (
+                        <li key={child.href}>
+                          <Link
+                            href={child.href}
+                            className="block px-4 py-2.5 text-sm font-semibold text-ink transition hover:bg-light hover:text-deep"
+                          >
+                            {label(child)}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              );
+            })}
           </nav>
 
-          <div className="hidden shrink-0 items-center gap-1.5 lg:flex">
+          <div className="hidden shrink-0 items-center gap-2 xl:flex">
             <LanguageToggle compact />
             {SHOW_DONATIONS && <Link href="/donate" className="btn btn-gold !px-3 !py-1.5 !text-[0.8rem]">
               <Icon name="heart" size={14} /> {t("nav.donate")}
             </Link>}
-            <Link href="/admissions" className="btn btn-gold !px-3 !py-1.5 !text-[0.8rem]">
-              {t("nav.apply")}
-            </Link>
-            <a
-              href={whatsappLink(UNIVERSITY.whatsapp, "Assalamu alaikum, I would like to ask about the university.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={t("nav.whatsapp")}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-deep transition hover:bg-gold"
-            >
-              <Icon name="whatsapp" size={18} />
-            </a>
           </div>
 
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-2 xl:hidden">
             <LanguageToggle compact />
             {SHOW_DONATIONS && <Link href="/donate" className="btn btn-gold !px-2.5 !py-1.5 !text-[0.75rem]">
               {t("nav.donate")}
@@ -138,8 +188,8 @@ export function SiteHeader() {
         </div>
       </header>
 
-      {/* Floating yellow social icons on the right edge (desktop) */}
-      <div className="fixed right-0 top-1/2 z-30 hidden -translate-y-1/2 flex-col gap-3 md:flex">
+      {/* Floating yellow social diamonds on the right edge (desktop) */}
+      <div className="fixed end-3 top-1/2 z-30 hidden -translate-y-1/2 flex-col gap-4 xl:flex">
         {[
           { href: UNIVERSITY.social.facebook, label: "Facebook", icon: "facebook" as const },
           { href: UNIVERSITY.social.x, label: "X", icon: "x" as const },
@@ -151,16 +201,16 @@ export function SiteHeader() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={item.label}
-            className="mr-[-14px] flex h-12 w-12 items-center justify-center rounded-md bg-gold text-white shadow-lg transition hover:mr-0"
+            className="flex h-11 w-11 rotate-45 items-center justify-center rounded-md bg-gold text-deep shadow-lg transition hover:bg-white"
           >
-            <Icon name={item.icon} size={20} />
+            <span className="-rotate-45"><Icon name={item.icon} size={20} /></span>
           </a>
         ))}
       </div>
 
       {/* Mobile drawer */}
       {open && (
-        <div className="fixed inset-0 z-50 lg:hidden">
+        <div className="fixed inset-0 z-50 xl:hidden">
           <button
             type="button"
             aria-label={t("nav.close")}
@@ -168,36 +218,51 @@ export function SiteHeader() {
             onClick={() => setOpen(false)}
           />
           <div className="absolute inset-y-0 end-0 flex w-[86%] max-w-sm flex-col overflow-y-auto bg-white shadow-2xl">
-            <div className="flex items-center justify-between border-b border-deep/10 px-4 py-3">
-              <Logo />
+            <div className="flex items-center justify-between bg-deep px-4 py-3">
+              <span className="inline-flex rounded-lg bg-white px-2.5 py-1.5"><Logo className="[&_span.font-display]:text-[0.95rem] [&_span.font-display]:font-extrabold [&_img]:h-9 [&_img]:w-auto" /></span>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="rounded-md p-2 text-deep"
+                className="rounded-md p-2 text-white"
                 aria-label={t("nav.close")}
               >
                 <Icon name="close" size={22} />
               </button>
             </div>
             <nav className="flex-1 px-2 py-3" aria-label="Mobile navigation">
-              {NAV.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`flex items-center justify-between rounded-md px-3 py-3 text-sm font-semibold ${
-                    isActive(item.href) ? "bg-light text-deep" : "text-ink"
-                  }`}
-                >
-                  {t(item.key)}
-                  <Icon name="chevron" size={16} className="text-fresh" />
-                </Link>
-              ))}
+              {NAV.map((item) => {
+                if (item.type === "link") {
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`flex items-center justify-between rounded-md px-3 py-3 text-sm font-bold ${isActive(item.href) ? "bg-light text-deep" : "text-ink"}`}
+                    >
+                      {t(item.key!)}
+                    </Link>
+                  );
+                }
+                return (
+                  <div key={item.en} className="mt-1">
+                    <p className="px-3 pb-1 pt-3 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-fresh">{pick(item.en, item.ur)}</p>
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className={`flex items-center justify-between rounded-md px-3 py-2.5 text-sm font-semibold ${isActive(child.href) ? "bg-light text-deep" : "text-ink"}`}
+                      >
+                        {label(child)}
+                        <Icon name="chevron" size={16} className="-rotate-90 text-fresh rtl:rotate-90" />
+                      </Link>
+                    ))}
+                  </div>
+                );
+              })}
               {SHOW_DONATIONS && <Link href="/donate" className="mx-1 mt-3 flex items-center justify-between rounded-md bg-light px-3 py-3 text-sm font-semibold text-deep">
                 {t("nav.donate")} <Icon name="heart" size={16} />
               </Link>}
             </nav>
             <div className="space-y-2 border-t border-deep/10 p-4">
-              <Link href="/admissions" className="btn btn-green w-full">{t("nav.apply")}</Link>
               <a
                 href={whatsappLink(UNIVERSITY.whatsapp, "Assalamu alaikum, I would like to ask about the university.")}
                 target="_blank"

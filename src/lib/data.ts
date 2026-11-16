@@ -24,9 +24,30 @@ export async function getAllAnnouncements() {
   return db.select().from(announcements).orderBy(desc(announcements.date));
 }
 
+// Programmes removed from the public site (hidden even if they still exist in the database).
+const HIDDEN_PROGRAMMES = ["bs-fiqh-shariah"];
+
+// Public-facing corrections applied on top of the database rows.
+function tidyProgramme<T extends { slug: string; durationYears: string; summaryEn: string; summaryUr: string; feePerYear: number; admissionFee: number }>(p: T): T {
+  const base = { ...p, feePerYear: 0, admissionFee: 0 };
+  if (p.slug === "alimiyyah") {
+    const years = Array.isArray((p as { curriculum?: unknown }).curriculum) ? ((p as { curriculum?: unknown }).curriculum as { labelEn: string; labelUr: string; courses: string[] }[]) : [];
+    const curriculum = years.length >= 8 ? years : [...years, { labelEn: `Year ${years.length + 1}`, labelUr: `سال ${years.length + 1}`, courses: ["Takhassus (specialisation)", "Teaching Residency", "Community Placement"] }];
+    return {
+      ...base,
+      curriculum,
+      durationYears: "8",
+      summaryEn: "The classical eight-year Dars-e-Nizami course in Arabic, Fiqh, Hadith and Tafseer.",
+      summaryUr: "کلاسیکی آٹھ سالہ درسِ نظامی — عربی، فقہ، حدیث اور تفسیر کے ساتھ۔",
+    };
+  }
+  return base;
+}
+
 export async function getProgrammes() {
   await ready();
-  return db.select().from(programmes).where(eq(programmes.published, true)).orderBy(asc(programmes.id));
+  const rows = await db.select().from(programmes).where(eq(programmes.published, true)).orderBy(asc(programmes.id));
+  return rows.filter((p) => !HIDDEN_PROGRAMMES.includes(p.slug)).map(tidyProgramme);
 }
 
 export async function getAllProgrammes() {
@@ -36,8 +57,9 @@ export async function getAllProgrammes() {
 
 export async function getProgramme(slug: string) {
   await ready();
+  if (HIDDEN_PROGRAMMES.includes(slug)) return null;
   const rows = await db.select().from(programmes).where(eq(programmes.slug, slug));
-  return rows[0] ?? null;
+  return rows[0] ? tidyProgramme(rows[0]) : null;
 }
 
 export async function getEvents() {
